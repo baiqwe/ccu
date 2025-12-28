@@ -1,0 +1,84 @@
+{
+  "Metadata": {
+    "inverse": {
+      "title": "Calculadora de Matriz Inversa con Pasos (2x2, 3x3, 4x4) - Gratis",
+      "description": "Calcula la matriz inversa instantáneamente con explicaciones detalladas paso a paso. Soporta métodos de adjunta y Gauss-Jordan. Perfecto para tareas de álgebra lineal.",
+      "h1": "Calculadora de Matriz Inversa"
+    },
+    "rref": {
+      "title": "Calculadora RREF con Pasos - Forma Escalonada Reducida",
+      "description": "Resuelve sistemas de ecuaciones lineales usando esta calculadora RREF. Muestra cada operación de fila paso a paso para ayudarte a aprender.",
+      "h1": "Calculadora de Forma Escalonada Reducida (RREF)"
+    },
+    "multiplication": {
+      "title": "Calculadora de Multiplicación de Matrices (Producto Punto)",
+      "description": "Multiplica matrices instantáneamente con esta calculadora gratuita. Soporta matrices 2x2, 3x3 y más grandes. Perfecto para ingeniería y ciencia de datos.",
+      "h1": "Calculadora de Multiplicación de Matrices"
+    },
+    "determinant": {
+      "title": "Calculadora de Determinante de Matriz con Pasos",
+      "description": "Calcula el determinante de cualquier matriz con explicaciones paso a paso. Soporta matrices 2x2, 3x3, 4x4 y más.",
+      "h1": "Calculadora de Determinante de Matriz"
+    },
+    "eigenvalue": {
+      "title": "Calculadora de Valores Propios con Pasos",
+      "description": "Encuentra valores propios y vectores propios de matrices con soluciones detalladas paso a paso. Perfecto para estudiantes de álgebra lineal.",
+      "h1": "Calculadora de Valores Propios"
+    },
+    "rank": {
+      "title": "Calculadora de Rango de Matriz",
+      "description": "Calcula el rango de una matriz instantáneamente. Muestra los pasos de reducción de filas para encontrar el rango.",
+      "h1": "Calculadora de Rango de Matriz"
+    }
+  },
+  "Common": {
+    "calculate": "Calcular",
+    "clear": "Limpiar",
+    "showSteps": "Mostrar Pasos de Solución",
+    "hideSteps": "Ocultar Pasos de Solución",
+    "copyLatex": "Copiar LaTeX",
+    "exportImage": "Exportar Imagen",
+    "result": "Resultado",
+    "steps": "Pasos de Solución",
+    "matrixSize": "Tamaño de Matriz",
+    "rows": "Filas",
+    "columns": "Columnas"
+  },
+  "Inverse": {
+    "step1": "Paso 1: Encontrar el Determinante",
+    "step1Desc": "Primero, calculamos el determinante de la matriz. Si es 0, la inversa no existe.",
+    "step2": "Paso 2: Encontrar la Matriz de Cofactores",
+    "step2Desc": "Calcula el cofactor para cada elemento.",
+    "step3": "Paso 3: Encontrar la Matriz Adjunta",
+    "step3Desc": "Transpone la matriz de cofactores.",
+    "step4": "Paso 4: Multiplicar por 1/Determinante",
+    "step4Desc": "Multiplica la matriz adjunta por 1 sobre el determinante.",
+    "noInverse": "Esta matriz no tiene inversa (determinante = 0)."
+  },
+  "RREF": {
+    "step1": "Paso 1: Crear Matriz Aumentada",
+    "step1Desc": "Escribe el sistema como una matriz aumentada.",
+    "step2": "Paso 2: Operaciones de Fila",
+    "step2Desc": "Aplica eliminación gaussiana para obtener la forma escalonada.",
+    "step3": "Paso 3: Sustitución hacia Atrás",
+    "step3Desc": "Aplica sustitución hacia atrás para obtener la forma escalonada reducida."
+  },
+  "FAQ": {
+    "inverse": {
+      "q1": "¿Cómo encontrar la inversa de una matriz 3x3?",
+      "a1": "Para encontrar la inversa de una matriz 3x3, sigue estos pasos: 1) Calcula el determinante, 2) Encuentra la matriz de cofactores, 3) Transpón para obtener la matriz adjunta, 4) Multiplica por 1/determinante.",
+      "q2": "¿Cuándo una matriz no tiene inversa?",
+      "a2": "Una matriz no tiene inversa si su determinante es cero. Tales matrices se llaman matrices singulares.",
+      "q3": "¿Qué es la matriz adjunta?",
+      "a3": "La matriz adjunta es la transpuesta de la matriz de cofactores. Se usa en la fórmula para encontrar la inversa de una matriz."
+    },
+    "rref": {
+      "q1": "¿Qué es la forma escalonada reducida?",
+      "a1": "La forma escalonada reducida (RREF) es una forma especial de matriz donde: 1) Todas las filas cero están al final, 2) La entrada principal en cada fila no cero es 1, 3) Cada 1 principal es la única entrada no cero en su columna.",
+      "q2": "¿Cómo convertir una matriz a RREF?",
+      "a2": "Usa eliminación Gauss-Jordan: 1) Comienza con la forma escalonada, 2) Haz todas las entradas principales 1, 3) Elimina todas las entradas arriba y debajo de cada 1 principal.",
+      "q3": "¿Cuál es la diferencia entre REF y RREF?",
+      "a3": "REF (forma escalonada) requiere ceros debajo de las entradas principales, mientras que RREF (forma escalonada reducida) también requiere ceros arriba de las entradas principales y cada entrada principal debe ser 1."
+    }
+  }
+}

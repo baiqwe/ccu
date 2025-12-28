@@ -1,0 +1,84 @@
+{
+  "Metadata": {
+    "inverse": {
+      "title": "Inverse Matrix Calculator with Steps (2x2, 3x3, 4x4) - Free",
+      "description": "Calculate the inverse matrix instantly with detailed step-by-step explanations. Supports Adjoint and Gauss-Jordan methods. Perfect for linear algebra homework.",
+      "h1": "Inverse Matrix Calculator"
+    },
+    "rref": {
+      "title": "RREF Calculator with Steps - Reduced Row Echelon Form",
+      "description": "Solve systems of linear equations using this RREF calculator. Shows every row operation step-by-step to help you learn.",
+      "h1": "Reduced Row Echelon Form (RREF) Calculator"
+    },
+    "multiplication": {
+      "title": "Matrix Multiplication Calculator (Dot Product)",
+      "description": "Multiply matrices instantly with this free calculator. Supports 2x2, 3x3, and larger matrices. Perfect for engineering and data science.",
+      "h1": "Matrix Multiplication Calculator"
+    },
+    "determinant": {
+      "title": "Matrix Determinant Calculator with Steps",
+      "description": "Calculate the determinant of any matrix with step-by-step explanations. Supports 2x2, 3x3, 4x4 matrices and beyond.",
+      "h1": "Matrix Determinant Calculator"
+    },
+    "eigenvalue": {
+      "title": "Eigenvalue Calculator with Steps",
+      "description": "Find eigenvalues and eigenvectors of matrices with detailed step-by-step solutions. Perfect for linear algebra students.",
+      "h1": "Eigenvalue Calculator"
+    },
+    "rank": {
+      "title": "Matrix Rank Calculator",
+      "description": "Calculate the rank of a matrix instantly. Shows the row reduction steps to find the rank.",
+      "h1": "Matrix Rank Calculator"
+    }
+  },
+  "Common": {
+    "calculate": "Calculate",
+    "clear": "Clear",
+    "showSteps": "Show Solution Steps",
+    "hideSteps": "Hide Solution Steps",
+    "copyLatex": "Copy LaTeX",
+    "exportImage": "Export Image",
+    "result": "Result",
+    "steps": "Solution Steps",
+    "matrixSize": "Matrix Size",
+    "rows": "Rows",
+    "columns": "Columns"
+  },
+  "Inverse": {
+    "step1": "Step 1: Find the Determinant",
+    "step1Desc": "First, we calculate the determinant of the matrix. If it is 0, the inverse does not exist.",
+    "step2": "Step 2: Find the Cofactor Matrix",
+    "step2Desc": "Calculate the cofactor for each element.",
+    "step3": "Step 3: Find the Adjugate Matrix",
+    "step3Desc": "Transpose the cofactor matrix.",
+    "step4": "Step 4: Multiply by 1/Determinant",
+    "step4Desc": "Multiply the adjugate matrix by 1 over the determinant.",
+    "noInverse": "This matrix has no inverse (determinant = 0)."
+  },
+  "RREF": {
+    "step1": "Step 1: Create Augmented Matrix",
+    "step1Desc": "Write the system as an augmented matrix.",
+    "step2": "Step 2: Row Operations",
+    "step2Desc": "Apply Gaussian elimination to get row echelon form.",
+    "step3": "Step 3: Back Substitution",
+    "step3Desc": "Apply back substitution to get reduced row echelon form."
+  },
+  "FAQ": {
+    "inverse": {
+      "q1": "How to find the inverse of a 3x3 matrix?",
+      "a1": "To find the inverse of a 3x3 matrix, follow these steps: 1) Calculate the determinant, 2) Find the matrix of cofactors, 3) Transpose to get the adjugate matrix, 4) Multiply by 1/determinant.",
+      "q2": "When does a matrix have no inverse?",
+      "a2": "A matrix has no inverse if its determinant is zero. Such matrices are called singular matrices.",
+      "q3": "What is the adjugate matrix?",
+      "a3": "The adjugate matrix is the transpose of the cofactor matrix. It's used in the formula for finding the inverse of a matrix."
+    },
+    "rref": {
+      "q1": "What is reduced row echelon form?",
+      "a1": "Reduced row echelon form (RREF) is a special form of a matrix where: 1) All zero rows are at the bottom, 2) The leading entry in each non-zero row is 1, 3) Each leading 1 is the only non-zero entry in its column.",
+      "q2": "How to convert a matrix to RREF?",
+      "a2": "Use Gaussian-Jordan elimination: 1) Start with row echelon form, 2) Make all leading entries 1, 3) Eliminate all entries above and below each leading 1.",
+      "q3": "What is the difference between REF and RREF?",
+      "a3": "REF (row echelon form) requires zeros below leading entries, while RREF (reduced row echelon form) also requires zeros above leading entries and each leading entry to be 1."
+    }
+  }
+}
