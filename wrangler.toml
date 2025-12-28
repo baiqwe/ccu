@@ -1,3 +1,7 @@
-name = "matrix-calculator"
+name = "ccu"
 compatibility_date = "2025-12-28"
-pages_build_output_dir = "out"
+
+# Static assets configuration for Workers
+[assets]
+directory = "./out"
+binding = "ASSETS"
