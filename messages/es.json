@@ -2,7 +2,7 @@
   "Metadata": {
     "inverse": {
       "title": "Calculadora de Matriz Inversa con Pasos (2x2, 3x3, 4x4) - Gratis",
-      "description": "Calcula la matriz inversa instantáneamente con explicaciones detalladas paso a paso. Soporta métodos de adjunta y Gauss-Jordan. Perfecto para tareas de álgebra lineal.",
+      "description": "Calcula la matriz inversa al instante con explicaciones detalladas paso a paso. Compatible con métodos Adjunto y Gauss-Jordan. Perfecto para tareas de álgebra lineal.",
       "h1": "Calculadora de Matriz Inversa"
     },
     "rref": {
@@ -12,12 +12,12 @@
     },
     "multiplication": {
       "title": "Calculadora de Multiplicación de Matrices (Producto Punto)",
-      "description": "Multiplica matrices instantáneamente con esta calculadora gratuita. Soporta matrices 2x2, 3x3 y más grandes. Perfecto para ingeniería y ciencia de datos.",
+      "description": "Multiplica matrices al instante con esta calculadora gratuita. Compatible con matrices 2x2, 3x3 y más grandes. Perfecto para ingeniería y ciencia de datos.",
       "h1": "Calculadora de Multiplicación de Matrices"
     },
     "determinant": {
       "title": "Calculadora de Determinante de Matriz con Pasos",
-      "description": "Calcula el determinante de cualquier matriz con explicaciones paso a paso. Soporta matrices 2x2, 3x3, 4x4 y más.",
+      "description": "Calcula el determinante de cualquier matriz con explicaciones paso a paso. Compatible con matrices 2x2, 3x3, 4x4 y más.",
       "h1": "Calculadora de Determinante de Matriz"
     },
     "eigenvalue": {
@@ -27,7 +27,7 @@
     },
     "rank": {
       "title": "Calculadora de Rango de Matriz",
-      "description": "Calcula el rango de una matriz instantáneamente. Muestra los pasos de reducción de filas para encontrar el rango.",
+      "description": "Calcula el rango de una matriz al instante. Muestra los pasos de reducción de filas para encontrar el rango.",
       "h1": "Calculadora de Rango de Matriz"
     }
   },
@@ -42,7 +42,59 @@
     "steps": "Pasos de Solución",
     "matrixSize": "Tamaño de Matriz",
     "rows": "Filas",
-    "columns": "Columnas"
+    "columns": "Columnas",
+    "relatedTools": "También Puede Necesitar"
+  },
+  "Footer": {
+    "aboutTitle": "Acerca de",
+    "aboutText": "Calculadoras de matrices gratuitas con soluciones paso a paso para estudiantes y profesionales de álgebra lineal.",
+    "quickLinksTitle": "Enlaces Rápidos",
+    "home": "Inicio",
+    "about": "Acerca de Nosotros",
+    "legalTitle": "Legal",
+    "privacy": "Política de Privacidad",
+    "terms": "Términos de Servicio",
+    "copyright": "Calculadora de Matrices. Todos los derechos reservados."
+  },
+  "Privacy": {
+    "title": "Política de Privacidad",
+    "description": "Aprende cómo protegemos tu privacidad y manejamos tus datos.",
+    "section1Title": "Recopilación de Datos",
+    "section1Content": "No recopilamos ni almacenamos ningún dato personal o cálculos de matrices. Todos los cálculos se realizan localmente en tu navegador o en nuestro servidor sin registrar ningún dato de entrada.",
+    "section2Title": "Cookies",
+    "section2Content": "Este sitio web utiliza cookies mínimas solo para funcionalidad esencial. No utilizamos cookies de seguimiento o análisis de terceros.",
+    "section3Title": "Tus Derechos de Privacidad",
+    "section3Content": "Dado que no recopilamos ningún dato personal, no hay datos que solicitar, modificar o eliminar. Tus cálculos permanecen completamente privados.",
+    "section4Title": "Servicios de Terceros",
+    "section4Content": "Podemos utilizar servicios de terceros para alojamiento y entrega de CDN. Estos servicios no tienen acceso a tus datos de cálculo.",
+    "section5Title": "Actualizaciones de la Política de Privacidad",
+    "section5Content": "Podemos actualizar esta política de privacidad de vez en cuando. Cualquier cambio se publicará en esta página con una fecha de revisión actualizada."
+  },
+  "Terms": {
+    "title": "Términos de Servicio",
+    "description": "Términos y condiciones para usar nuestras calculadoras de matrices.",
+    "section1Title": "Aceptación de Términos",
+    "section1Content": "Al usar este sitio web, aceptas estos términos de servicio. Si no estás de acuerdo, por favor no uses las calculadoras.",
+    "section2Title": "Licencia de Uso",
+    "section2Content": "Se te otorga una licencia limitada para usar estas calculadoras con fines personales, educativos y comerciales. No puedes copiar, modificar o distribuir el código fuente sin permiso.",
+    "section3Title": "Descargo de Responsabilidad de Precisión",
+    "section3Content": "Si bien nos esforzamos por la precisión, no garantizamos que todos los cálculos estén libres de errores. Siempre verifica los cálculos críticos de forma independiente.",
+    "section4Title": "Limitaciones",
+    "section4Content": "No somos responsables de ningún daño que surja del uso o la imposibilidad de usar estas calculadoras. Úsalas bajo tu propio riesgo."
+  },
+  "About": {
+    "title": "Acerca de Nosotros",
+    "description": "Aprende sobre nuestra misión de hacer que el álgebra lineal sea accesible para todos.",
+    "missionTitle": "Nuestra Misión",
+    "missionContent": "Creamos estas calculadoras de matrices gratuitas para ayudar a estudiantes, ingenieros y científicos de datos a resolver problemas de álgebra lineal rápidamente y comprender las matemáticas subyacentes a través de explicaciones paso a paso.",
+    "storyTitle": "Nuestra Historia",
+    "storyContent": "Como ex estudiantes de matemáticas, recordamos luchar con cálculos de matrices tediosos y desear una herramienta que no solo diera respuestas sino que también mostrara el proceso de solución completo. Por eso construimos esta plataforma: para hacer que el álgebra lineal sea más accesible y menos intimidante.",
+    "whyFreeTitle": "¿Por Qué Gratis?",
+    "whyFreeContent": "La educación debe ser accesible para todos. Creemos en proporcionar herramientas matemáticas de alta calidad sin muros de pago o requisitos de registro. Todas nuestras calculadoras son de uso gratuito, para siempre.",
+    "technologyTitle": "Tecnología",
+    "technologyContent": "Nuestras calculadoras utilizan aritmética precisa basada en fracciones para garantizar la precisión. Todos los cálculos se pueden realizar del lado del cliente para máxima privacidad, con explicaciones paso a paso generadas mediante algoritmos avanzados.",
+    "contactTitle": "Ponte en Contacto",
+    "contactContent": "¿Tienes preguntas o sugerencias? Nos encantaría saber de ti. Utiliza la información de contacto en el pie de página para comunicarte."
   },
   "Inverse": {
     "step1": "Paso 1: Encontrar el Determinante",
@@ -50,7 +102,7 @@
     "step2": "Paso 2: Encontrar la Matriz de Cofactores",
     "step2Desc": "Calcula el cofactor para cada elemento.",
     "step3": "Paso 3: Encontrar la Matriz Adjunta",
-    "step3Desc": "Transpone la matriz de cofactores.",
+    "step3Desc": "Transponer la matriz de cofactores.",
     "step4": "Paso 4: Multiplicar por 1/Determinante",
     "step4Desc": "Multiplica la matriz adjunta por 1 sobre el determinante.",
     "noInverse": "Esta matriz no tiene inversa (determinante = 0)."
@@ -60,25 +112,29 @@
     "step1Desc": "Escribe el sistema como una matriz aumentada.",
     "step2": "Paso 2: Operaciones de Fila",
     "step2Desc": "Aplica eliminación gaussiana para obtener la forma escalonada.",
-    "step3": "Paso 3: Sustitución hacia Atrás",
+    "step3": "Paso 3: Sustitución Hacia Atrás",
     "step3Desc": "Aplica sustitución hacia atrás para obtener la forma escalonada reducida."
   },
   "FAQ": {
     "inverse": {
       "q1": "¿Cómo encontrar la inversa de una matriz 3x3?",
-      "a1": "Para encontrar la inversa de una matriz 3x3, sigue estos pasos: 1) Calcula el determinante, 2) Encuentra la matriz de cofactores, 3) Transpón para obtener la matriz adjunta, 4) Multiplica por 1/determinante.",
+      "a1": "Para encontrar la inversa de una matriz 3x3, sigue estos pasos: 1) Calcula el determinante - si es cero, la matriz es singular y no tiene inversa. 2) Encuentra la matriz de cofactores calculando el determinante de cada matriz menor 2x2. 3) Transpone la matriz de cofactores para obtener la matriz adjunta. 4) Multiplica la matriz adjunta por 1/determinante para obtener la inversa.",
       "q2": "¿Cuándo una matriz no tiene inversa?",
-      "a2": "Una matriz no tiene inversa si su determinante es cero. Tales matrices se llaman matrices singulares.",
+      "a2": "Una matriz no tiene inversa si su determinante es cero. Tales matrices se llaman matrices singulares o no invertibles. Esto ocurre cuando las filas o columnas son linealmente dependientes, lo que significa que una fila es una combinación lineal de las otras.",
       "q3": "¿Qué es la matriz adjunta?",
-      "a3": "La matriz adjunta es la transpuesta de la matriz de cofactores. Se usa en la fórmula para encontrar la inversa de una matriz."
+      "a3": "La matriz adjunta (también llamada matriz adjugada) es la transpuesta de la matriz de cofactores. Es un componente clave en la fórmula para encontrar la inversa: A⁻¹ = (1/det(A)) × adj(A). Cada elemento en la adjunta es un determinante menor con signo.",
+      "q4": "¿Cuáles son las aplicaciones de las matrices inversas?",
+      "a4": "Las matrices inversas se utilizan extensivamente en: 1) Resolver sistemas de ecuaciones lineales (Ax = b se convierte en x = A⁻¹b), 2) Gráficos por computadora para transformaciones y posicionamiento de cámara, 3) Criptografía para encriptación y desencriptación, 4) Teoría de control para análisis de sistemas, 5) Estadística para análisis de regresión."
     },
     "rref": {
       "q1": "¿Qué es la forma escalonada reducida?",
-      "a1": "La forma escalonada reducida (RREF) es una forma especial de matriz donde: 1) Todas las filas cero están al final, 2) La entrada principal en cada fila no cero es 1, 3) Cada 1 principal es la única entrada no cero en su columna.",
+      "a1": "La forma escalonada reducida (RREF) es una forma especial de una matriz con estas propiedades: 1) Todas las filas cero están en la parte inferior, 2) La entrada principal (pivote) en cada fila no cero es 1, 3) Cada 1 principal es la única entrada no cero en su columna, 4) Cada 1 principal aparece a la derecha del 1 principal en la fila superior.",
       "q2": "¿Cómo convertir una matriz a RREF?",
-      "a2": "Usa eliminación Gauss-Jordan: 1) Comienza con la forma escalonada, 2) Haz todas las entradas principales 1, 3) Elimina todas las entradas arriba y debajo de cada 1 principal.",
+      "a2": "Usa eliminación de Gauss-Jordan: 1) Comienza con la forma escalonada usando eliminación hacia adelante, 2) Escala cada fila pivote para que la entrada principal sea 1, 3) Elimina todas las entradas arriba de cada pivote agregando múltiplos de la fila pivote a las filas superiores, 4) Continúa hasta que se satisfagan todas las condiciones para RREF.",
       "q3": "¿Cuál es la diferencia entre REF y RREF?",
-      "a3": "REF (forma escalonada) requiere ceros debajo de las entradas principales, mientras que RREF (forma escalonada reducida) también requiere ceros arriba de las entradas principales y cada entrada principal debe ser 1."
+      "a3": "La Forma Escalonada de Fila (REF) requiere solo ceros debajo de cada pivote, mientras que la Forma Escalonada Reducida (RREF) requiere ceros tanto arriba como debajo de cada pivote. RREF también requiere que todos los pivotes sean iguales a 1. RREF es única para cualquier matriz, mientras que REF no lo es.",
+      "q4": "¿Por qué usar RREF para resolver sistemas?",
+      "a4": "RREF hace que resolver sistemas de ecuaciones lineales sea trivial porque la solución se puede leer directamente de la matriz final. Cada columna pivote corresponde a una variable básica, y la columna más a la derecha (en una matriz aumentada) da los valores. También revela claramente si un sistema no tiene solución, una solución o infinitas soluciones."
     }
   }
 }

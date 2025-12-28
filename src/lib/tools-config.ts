@@ -1,11 +1,12 @@
 export const toolsConfig = {
-  'inverse-matrix': {
+  'inverse': {
     name: 'Inverse Matrix Calculator',
     slugs: {
       en: 'inverse-matrix-calculator',
       es: 'calculadora-matriz-inversa'
     },
-    category: 'flagship'
+    category: 'flagship',
+    relatedTools: ['determinant', 'rref']
   },
   'rref': {
     name: 'RREF Calculator',
@@ -13,7 +14,8 @@ export const toolsConfig = {
       en: 'rref-calculator',
       es: 'calculadora-gauss-jordan'
     },
-    category: 'blue-ocean'
+    category: 'blue-ocean',
+    relatedTools: ['inverse', 'rank']
   },
   'multiplication': {
     name: 'Matrix Multiplication Calculator',
@@ -21,7 +23,8 @@ export const toolsConfig = {
       en: 'matrix-multiplication-calculator',
       es: 'calculadora-multiplicacion-matrices'
     },
-    category: 'money'
+    category: 'money',
+    relatedTools: ['inverse', 'determinant']
   },
   'determinant': {
     name: 'Matrix Determinant Calculator',
@@ -29,7 +32,8 @@ export const toolsConfig = {
       en: 'determinant-calculator',
       es: 'calculadora-determinante'
     },
-    category: 'long-tail'
+    category: 'long-tail',
+    relatedTools: ['inverse', 'rank']
   },
   'eigenvalue': {
     name: 'Eigenvalue Calculator',
@@ -37,7 +41,8 @@ export const toolsConfig = {
       en: 'eigenvalue-calculator',
       es: 'calculadora-valores-propios'
     },
-    category: 'long-tail'
+    category: 'long-tail',
+    relatedTools: ['inverse', 'determinant']
   },
   'rank': {
     name: 'Matrix Rank Calculator',
@@ -45,7 +50,8 @@ export const toolsConfig = {
       en: 'rank-matrix-calculator',
       es: 'calculadora-rango-matriz'
     },
-    category: 'long-tail'
+    category: 'long-tail',
+    relatedTools: ['rref', 'determinant']
   }
 };
 

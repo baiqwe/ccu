@@ -1,11 +1,13 @@
 import { useTranslations } from 'next-intl';
 import Link from 'next/link';
+import { generateBreadcrumbSchema } from '@/lib/seo-schema';
 
 export default function HomePage({ params: { locale } }: { params: { locale: string } }) {
   const t = useTranslations('Metadata');
+  const breadcrumbSchema = generateBreadcrumbSchema({ locale });
 
   const tools = [
-    { id: 'inverse-matrix', name: t('inverse.h1'), slug: locale === 'en' ? 'inverse-matrix-calculator' : 'calculadora-matriz-inversa' },
+    { id: 'inverse', name: t('inverse.h1'), slug: locale === 'en' ? 'inverse-matrix-calculator' : 'calculadora-matriz-inversa' },
     { id: 'rref', name: t('rref.h1'), slug: locale === 'en' ? 'rref-calculator' : 'calculadora-gauss-jordan' },
     { id: 'multiplication', name: t('multiplication.h1'), slug: locale === 'en' ? 'matrix-multiplication-calculator' : 'calculadora-multiplicacion-matrices' },
     { id: 'determinant', name: t('determinant.h1'), slug: locale === 'en' ? 'determinant-calculator' : 'calculadora-determinante' },
@@ -15,25 +17,41 @@ export default function HomePage({ params: { locale } }: { params: { locale: str
 
   return (
     <main className="container mx-auto px-4 py-12">
-      <div className="text-center mb-12">
-        <h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+
+      {/* Hero Section */}
+      <div className="text-center mb-16 relative">
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-600/10 to-indigo-600/10 blur-3xl -z-10"></div>
+        <h1 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent mb-6 leading-tight">
           Free Matrix Calculators with Steps
         </h1>
-        <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+        <p className="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
           Solve linear algebra problems instantly with detailed step-by-step explanations.
-          Perfect for students, engineers, and data scientists.
+          <span className="block mt-2 text-lg text-gray-500">Perfect for students, engineers, and data scientists.</span>
         </p>
       </div>
 
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+      {/* Calculator Grid */}
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto mb-16">
         {tools.map((tool) => (
           <Link
             key={tool.id}
             href={`/${locale}/${tool.slug}`}
-            className="block bg-white border-2 border-gray-200 rounded-lg p-6 hover:border-blue-500 hover:shadow-lg transition-all"
+            className="group block glass-card p-6 hover:shadow-glow hover:-translate-y-1 transition-all duration-300"
           >
-            <h2 className="text-xl font-semibold text-gray-800 mb-2">{tool.name}</h2>
-            <p className="text-gray-600 text-sm">
+            <div className="flex items-start justify-between mb-3">
+              <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-lg flex items-center justify-center text-white text-2xl font-bold shadow-md">
+                {tool.id.charAt(0).toUpperCase()}
+              </div>
+              <svg className="w-5 h-5 text-gray-400 group-hover:text-blue-600 group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </div>
+            <h2 className="text-xl font-bold text-gray-800 mb-2 group-hover:text-blue-600 transition-colors">{tool.name}</h2>
+            <p className="text-gray-600 text-sm leading-relaxed">
               Calculate with detailed step-by-step solutions
             </p>
           </Link>

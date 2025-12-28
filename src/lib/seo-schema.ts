@@ -28,3 +28,40 @@ export function generateJsonLd({ toolId, locale, description }: JsonLdProps) {
 
   return jsonLd;
 }
+
+export interface BreadcrumbProps {
+  locale: string;
+  toolId?: string;
+  toolSlug?: string;
+  toolName?: string;
+}
+
+export function generateBreadcrumbSchema({ locale, toolId, toolSlug, toolName }: BreadcrumbProps) {
+  const baseUrl = 'https://domain.com';
+  const homeLabel = locale === 'en' ? 'Home' : 'Inicio';
+  
+  const itemListElement = [
+    {
+      '@type': 'ListItem',
+      position: 1,
+      name: homeLabel,
+      item: `${baseUrl}/${locale}`
+    }
+  ];
+
+  // Add tool page as second breadcrumb item if provided
+  if (toolId && toolSlug && toolName) {
+    itemListElement.push({
+      '@type': 'ListItem',
+      position: 2,
+      name: toolName,
+      item: `${baseUrl}/${locale}/${toolSlug}`
+    });
+  }
+
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement
+  };
+}

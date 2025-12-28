@@ -1,9 +1,10 @@
 import { notFound } from 'next/navigation';
 import { getTranslations } from 'next-intl/server';
 import { toolsConfig, findToolIdBySlug } from '@/lib/tools-config';
-import { generateJsonLd } from '@/lib/seo-schema';
+import { generateJsonLd, generateBreadcrumbSchema } from '@/lib/seo-schema';
 import { CalculatorWrapper } from '@/components/calculators/CalculatorWrapper';
 import { FAQSection } from '@/components/seo/FAQSection';
+import { RelatedTools } from '@/components/seo/RelatedTools';
 
 export async function generateStaticParams() {
   const params = [];
@@ -43,6 +44,12 @@ export default async function ToolPage({ params: { locale, tool } }: { params: {
 
   const t = await getTranslations({ locale, namespace: `Metadata.${toolId}` });
   const jsonLd = generateJsonLd({ toolId, locale, description: t('description') });
+  const breadcrumbSchema = generateBreadcrumbSchema({
+    locale,
+    toolId,
+    toolSlug: tool,
+    toolName: t('h1')
+  });
 
   return (
     <main className="container mx-auto px-4 py-8">
@@ -53,6 +60,11 @@ export default async function ToolPage({ params: { locale, tool } }: { params: {
         />
       )}
 
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+
       <h1 className="text-3xl md:text-5xl font-bold mb-6 text-center text-gray-800">
         {t('h1')}
       </h1>
@@ -60,6 +72,8 @@ export default async function ToolPage({ params: { locale, tool } }: { params: {
       <CalculatorWrapper toolId={toolId} />
 
       <FAQSection toolId={toolId} />
+
+      <RelatedTools currentToolId={toolId} locale={locale} />
     </main>
   );
 }

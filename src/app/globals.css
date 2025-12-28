@@ -1,3 +1,63 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+@layer base {
+  body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+}
+
+@layer utilities {
+  /* Glassmorphism effect */
+  .glass-card {
+    @apply bg-white/80 backdrop-blur-md border border-white/20 shadow-xl rounded-2xl;
+  }
+
+  .glass-card-strong {
+    @apply bg-white/90 backdrop-blur-lg border border-white/30 shadow-2xl rounded-2xl;
+  }
+
+  /* Premium button styles */
+  .btn-primary {
+    @apply bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold px-8 py-3 rounded-xl shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-200 active:translate-y-0;
+  }
+
+  .btn-secondary {
+    @apply bg-white/50 text-gray-700 font-medium px-6 py-2.5 rounded-lg border border-gray-200 hover:bg-white/80 hover:border-gray-300 transition-all duration-200;
+  }
+
+  .btn-ghost {
+    @apply text-gray-600 font-medium px-6 py-2.5 rounded-lg hover:bg-gray-100 transition-colors duration-200;
+  }
+
+  /* Input enhancements */
+  .input-matrix {
+    @apply bg-gray-50 border-0 rounded-md w-14 h-14 text-center text-lg font-medium text-gray-800 focus:bg-white focus:ring-2 focus:ring-blue-400 focus:outline-none transition-all;
+  }
+
+  /* Card hover effects */
+  .card-hover {
+    @apply transition-all duration-300 hover:shadow-lg hover:-translate-y-1;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}

@@ -42,7 +42,59 @@
     "steps": "Solution Steps",
     "matrixSize": "Matrix Size",
     "rows": "Rows",
-    "columns": "Columns"
+    "columns": "Columns",
+    "relatedTools": "You Might Also Need"
+  },
+  "Footer": {
+    "aboutTitle": "About",
+    "aboutText": "Free matrix calculators with step-by-step solutions for linear algebra students and professionals.",
+    "quickLinksTitle": "Quick Links",
+    "home": "Home",
+    "about": "About Us",
+    "legalTitle": "Legal",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "copyright": "Matrix Calculator. All rights reserved."
+  },
+  "Privacy": {
+    "title": "Privacy Policy",
+    "description": "Learn how we protect your privacy and handle your data.",
+    "section1Title": "Data Collection",
+    "section1Content": "We do not collect or store any personal data or matrix calculations. All computations are performed locally in your browser or on our server without logging any input data.",
+    "section2Title": "Cookies",
+    "section2Content": "This website uses minimal cookies only for essential functionality. We do not use tracking cookies or third-party analytics.",
+    "section3Title": "Your Privacy Rights",
+    "section3Content": "Since we don't collect any personal data, there is no data to request, modify, or delete. Your calculations remain completely private.",
+    "section4Title": "Third-Party Services",
+    "section4Content": "We may use third-party services for hosting and CDN delivery. These services do not have access to your calculation data.",
+    "section5Title": "Updates to Privacy Policy",
+    "section5Content": "We may update this privacy policy from time to time. Any changes will be posted on this page with an updated revision date."
+  },
+  "Terms": {
+    "title": "Terms of Service",
+    "description": "Terms and conditions for using our matrix calculators.",
+    "section1Title": "Acceptance of Terms",
+    "section1Content": "By using this website, you agree to these terms of service. If you do not agree, please do not use the calculators.",
+    "section2Title": "Use License",
+    "section2Content": "You are granted a limited license to use these calculators for personal, educational, and commercial purposes. You may not copy, modify, or distribute the source code without permission.",
+    "section3Title": "Accuracy Disclaimer",
+    "section3Content": "While we strive for accuracy, we do not guarantee that all calculations are error-free. Always verify critical calculations independently.",
+    "section4Title": "Limitations",
+    "section4Content": "We are not liable for any damages arising from the use or inability to use these calculators. Use at your own risk."
+  },
+  "About": {
+    "title": "About Us",
+    "description": "Learn about our mission to make linear algebra accessible to everyone.",
+    "missionTitle": "Our Mission",
+    "missionContent": "We created these free matrix calculators to help students, engineers, and data scientists solve linear algebra problems quickly and understand the underlying mathematics through step-by-step explanations.",
+    "storyTitle": "Our Story",
+    "storyContent": "As former math students, we remember struggling with tedious matrix calculations and wishing for a tool that not only gave answers but also showed the complete solution process. That's why we built this platform—to make linear algebra more accessible and less intimidating.",
+    "whyFreeTitle": "Why Free?",
+    "whyFreeContent": "Education should be accessible to everyone. We believe in providing high-quality mathematical tools without paywalls or registration requirements. All our calculators are free to use, forever.",
+    "technologyTitle": "Technology",
+    "technologyContent": "Our calculators use precise fraction-based arithmetic to ensure accuracy. All computations can be performed client-side for maximum privacy, with step-by-step explanations generated using advanced algorithms.",
+    "contactTitle": "Get in Touch",
+    "contactContent": "Have questions or suggestions? We'd love to hear from you. Use the contact information in the footer to reach out."
   },
   "Inverse": {
     "step1": "Step 1: Find the Determinant",
@@ -66,19 +118,23 @@
   "FAQ": {
     "inverse": {
       "q1": "How to find the inverse of a 3x3 matrix?",
-      "a1": "To find the inverse of a 3x3 matrix, follow these steps: 1) Calculate the determinant, 2) Find the matrix of cofactors, 3) Transpose to get the adjugate matrix, 4) Multiply by 1/determinant.",
+      "a1": "To find the inverse of a 3x3 matrix, follow these steps: 1) Calculate the determinant - if it's zero, the matrix is singular and has no inverse. 2) Find the matrix of cofactors by calculating the determinant of each 2x2 minor matrix. 3) Transpose the cofactor matrix to get the adjugate matrix. 4) Multiply the adjugate matrix by 1/determinant to get the inverse.",
       "q2": "When does a matrix have no inverse?",
-      "a2": "A matrix has no inverse if its determinant is zero. Such matrices are called singular matrices.",
+      "a2": "A matrix has no inverse if its determinant is zero. Such matrices are called singular or non-invertible matrices. This occurs when the rows or columns are linearly dependent, meaning one row is a linear combination of the others.",
       "q3": "What is the adjugate matrix?",
-      "a3": "The adjugate matrix is the transpose of the cofactor matrix. It's used in the formula for finding the inverse of a matrix."
+      "a3": "The adjugate matrix (also called the adjoint matrix) is the transpose of the cofactor matrix. It's a key component in the formula for finding the inverse: A⁻¹ = (1/det(A)) × adj(A). Each element in the adjugate is a signed minor determinant.",
+      "q4": "What are the applications of inverse matrices?",
+      "a4": "Inverse matrices are used extensively in: 1) Solving systems of linear equations (Ax = b becomes x = A⁻¹b), 2) Computer graphics for transformations and camera positioning, 3) Cryptography for encryption and decryption, 4) Control theory for system analysis, 5) Statistics for regression analysis."
     },
     "rref": {
       "q1": "What is reduced row echelon form?",
-      "a1": "Reduced row echelon form (RREF) is a special form of a matrix where: 1) All zero rows are at the bottom, 2) The leading entry in each non-zero row is 1, 3) Each leading 1 is the only non-zero entry in its column.",
+      "a1": "Reduced row echelon form (RREF) is a special form of a matrix with these properties: 1) All zero rows are at the bottom, 2) The leading entry (pivot) in each non-zero row is 1, 3) Each leading 1 is the only non-zero entry in its column, 4) Each leading 1 appears to the right of the leading 1 in the row above.",
       "q2": "How to convert a matrix to RREF?",
-      "a2": "Use Gaussian-Jordan elimination: 1) Start with row echelon form, 2) Make all leading entries 1, 3) Eliminate all entries above and below each leading 1.",
+      "a2": "Use Gaussian-Jordan elimination: 1) Start with row echelon form using forward elimination, 2) Scale each pivot row so the leading entry becomes 1, 3) Eliminate all entries above each pivot by adding multiples of the pivot row to rows above it, 4) Continue until all conditions for RREF are satisfied.",
       "q3": "What is the difference between REF and RREF?",
-      "a3": "REF (row echelon form) requires zeros below leading entries, while RREF (reduced row echelon form) also requires zeros above leading entries and each leading entry to be 1."
+      "a3": "Row Echelon Form (REF) requires only zeros below each pivot, while Reduced Row Echelon Form (RREF) requires zeros both above and below each pivot. RREF also requires that all pivots equal 1. RREF is unique for any matrix, while REF is not.",
+      "q4": "Why use RREF for solving systems?",
+      "a4": "RREF makes solving systems of linear equations trivial because the solution can be read directly from the final matrix. Each pivot column corresponds to a basic variable, and the rightmost column (in an augmented matrix) gives the values. It also clearly reveals whether a system has no solution, one solution, or infinitely many solutions."
     }
   }
 }
