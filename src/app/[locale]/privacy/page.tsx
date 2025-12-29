@@ -1,4 +1,4 @@
-import { getTranslations } from 'next-intl/server';
+import { getTranslations, unstable_setRequestLocale } from 'next-intl/server';
 
 export async function generateMetadata({ params: { locale } }: { params: { locale: string } }) {
     const t = await getTranslations({ locale, namespace: 'Privacy' });
@@ -10,6 +10,7 @@ export async function generateMetadata({ params: { locale } }: { params: { local
 }
 
 export default async function PrivacyPage({ params: { locale } }: { params: { locale: string } }) {
+    unstable_setRequestLocale(locale);
     const t = await getTranslations({ locale, namespace: 'Privacy' });
 
     return (

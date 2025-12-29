@@ -1,5 +1,5 @@
 import { notFound } from 'next/navigation';
-import { getTranslations } from 'next-intl/server';
+import { getTranslations, unstable_setRequestLocale } from 'next-intl/server';
 import { toolsConfig, findToolIdBySlug } from '@/lib/tools-config';
 import { generateJsonLd, generateBreadcrumbSchema } from '@/lib/seo-schema';
 import { CalculatorWrapper } from '@/components/calculators/CalculatorWrapper';
@@ -40,6 +40,7 @@ export async function generateMetadata({ params: { locale, tool } }: { params: {
 }
 
 export default async function ToolPage({ params: { locale, tool } }: { params: { locale: string; tool: string } }) {
+  unstable_setRequestLocale(locale);
   const toolId = findToolIdBySlug(tool, locale);
   if (!toolId) notFound();
 

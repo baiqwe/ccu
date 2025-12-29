@@ -1,5 +1,5 @@
 import { NextIntlClientProvider } from 'next-intl';
-import { getMessages } from 'next-intl/server';
+import { getMessages, unstable_setRequestLocale } from 'next-intl/server';
 import { Footer } from '@/components/layout/Footer';
 import '../globals.css';
 
@@ -20,6 +20,10 @@ export const metadata = {
   },
 };
 
+export function generateStaticParams() {
+  return [{ locale: 'en' }, { locale: 'es' }];
+}
+
 export default async function LocaleLayout({
   children,
   params: { locale }
@@ -27,6 +31,9 @@ export default async function LocaleLayout({
   children: React.ReactNode;
   params: { locale: string };
 }) {
+  // Enable static rendering
+  unstable_setRequestLocale(locale);
+
   const messages = await getMessages();
 
   return (
@@ -56,8 +63,4 @@ export default async function LocaleLayout({
       </body>
     </html>
   );
-}
-
-export function generateStaticParams() {
-  return [{ locale: 'en' }, { locale: 'es' }];
 }

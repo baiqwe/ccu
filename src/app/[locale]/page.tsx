@@ -1,8 +1,10 @@
 import { useTranslations } from 'next-intl';
+import { unstable_setRequestLocale } from 'next-intl/server';
 import Link from 'next/link';
 import { generateBreadcrumbSchema } from '@/lib/seo-schema';
 
 export default function HomePage({ params: { locale } }: { params: { locale: string } }) {
+  unstable_setRequestLocale(locale);
   const t = useTranslations('Metadata');
   const breadcrumbSchema = generateBreadcrumbSchema({ locale });
 
