@@ -7,12 +7,13 @@ import { FAQSection } from '@/components/seo/FAQSection';
 import { RelatedTools } from '@/components/seo/RelatedTools';
 
 export async function generateStaticParams() {
-  const params = [];
-  const locales = ['en', 'es'];
+  const params: Array<{ locale: string; tool: string }> = [];
+  const locales = ['en', 'es'] as const;
+  const toolKeys = Object.keys(toolsConfig) as Array<keyof typeof toolsConfig>;
 
   for (const locale of locales) {
-    for (const toolKey of Object.keys(toolsConfig)) {
-      const slug = toolsConfig[toolKey as keyof typeof toolsConfig].slugs[locale as keyof typeof toolsConfig[typeof toolKey]['slugs']];
+    for (const toolKey of toolKeys) {
+      const slug = toolsConfig[toolKey].slugs[locale];
       params.push({ locale, tool: slug });
     }
   }

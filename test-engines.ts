@@ -1,7 +1,7 @@
-import { Fraction } from '../src/components/engines/Fraction';
-import { calculateInverse } from '../src/components/engines/InverseSteps';
-import { calculateRREF } from '../src/components/engines/RREFSteps';
-import { calculateMultiplication } from '../src/components/engines/MultiplicationSteps';
+import { Fraction } from '@/components/engines/Fraction';
+import { calculateInverse } from '@/components/engines/InverseSteps';
+import { calculateRREF } from '@/components/engines/RREFSteps';
+import { calculateMultiplication } from '@/components/engines/MultiplicationSteps';
 
 console.log('=== Testing Fraction Class ===');
 
