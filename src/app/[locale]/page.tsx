@@ -53,7 +53,7 @@ export default function HomePage({ params: { locale } }: { params: { locale: str
             <span className="block text-2xl md:text-3xl lg:text-4xl font-light text-zinc-500">
               with step-by-step mathematical proofs
             </span>
-          </h1>
+        </h1>
 
           {/* Description */}
           <p className="text-center text-lg md:text-xl text-zinc-400 max-w-2xl mx-auto mb-12 leading-relaxed">
@@ -101,14 +101,14 @@ export default function HomePage({ params: { locale } }: { params: { locale: str
             <p className="text-zinc-500 max-w-xl mx-auto">
               Each tool implements textbook algorithms with complete step visualization. 
               Select one to see the mathematical derivation process.
-            </p>
-          </div>
+        </p>
+      </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {tools.map((tool) => (
-              <Link
-                key={tool.id}
-                href={`/${locale}/${tool.slug}`}
+        {tools.map((tool) => (
+          <Link
+            key={tool.id}
+            href={`/${locale}/${tool.slug}`}
                 className="group relative bg-white/[0.02] border border-white/5 rounded-xl p-6 hover:bg-white/[0.05] hover:border-white/10 transition-all duration-300"
               >
                 {/* Gradient indicator */}
@@ -119,17 +119,17 @@ export default function HomePage({ params: { locale } }: { params: { locale: str
                     {tool.name}
                   </h3>
                   <p className="text-sm text-zinc-500 mt-1 font-mono">{tool.desc}</p>
-                </div>
+              </div>
 
                 <div className="flex items-center text-sm text-zinc-600 group-hover:text-zinc-400 transition-colors">
                   <span>Open calculator</span>
                   <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                  </svg>
-                </div>
-              </Link>
-            ))}
-          </div>
+              </svg>
+            </div>
+          </Link>
+        ))}
+      </div>
         </div>
       </section>
 
@@ -139,7 +139,7 @@ export default function HomePage({ params: { locale } }: { params: { locale: str
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Our Methodology</h2>
             <p className="text-zinc-500 max-w-2xl mx-auto">
-              We don't just give you answers—we show you how mathematicians actually derive them. 
+              We don&apos;t just give you answers—we show you how mathematicians actually derive them. 
               Every step follows established linear algebra textbook conventions.
             </p>
           </div>
@@ -156,9 +156,10 @@ export default function HomePage({ params: { locale } }: { params: { locale: str
               <p className="text-zinc-400 leading-relaxed mb-6">
                 Unlike floating-point calculators that introduce rounding errors, we represent 
                 all numbers as exact fractions. When you see <code className="px-2 py-1 bg-white/5 rounded text-emerald-400 font-mono text-sm">1/3</code>, 
-                it's truly 1/3—not 0.333333.
+                it&apos;s truly 1/3—not 0.333333.
               </p>
               <div className="bg-black/30 rounded-lg p-4 font-mono text-sm">
+                {/* Internal representation */}
                 <div className="text-zinc-500">// Internal representation</div>
                 <div className="text-zinc-300">
                   <span className="text-violet-400">class</span> Fraction {'{'}
@@ -210,7 +211,7 @@ export default function HomePage({ params: { locale } }: { params: { locale: str
                 <h3 className="text-xl font-semibold text-white">Step-by-Step Derivation</h3>
               </div>
               <p className="text-zinc-400 leading-relaxed mb-6">
-                Each calculation generates a complete derivation trail. For a 3×3 inverse, you'll see: 
+                Each calculation generates a complete derivation trail. For a 3×3 inverse, you&apos;ll see: 
                 determinant calculation → cofactor matrix → adjugate (transpose) → final multiplication. 
                 Every step includes the mathematical reasoning.
               </p>
@@ -229,8 +230,8 @@ export default function HomePage({ params: { locale } }: { params: { locale: str
                 <h3 className="text-xl font-semibold text-white">Client-Side Computation</h3>
               </div>
               <p className="text-zinc-400 leading-relaxed mb-6">
-                All calculations run in your browser using JavaScript. We don't send your matrices to 
-                any server. Check the Network tab in DevTools—you'll see zero API calls during computation. 
+                All calculations run in your browser using JavaScript. We don&apos;t send your matrices to 
+                any server. Check the Network tab in DevTools—you&apos;ll see zero API calls during computation. 
                 Your data stays on your device.
               </p>
               <div className="flex items-center gap-2 text-sm text-zinc-500">
@@ -250,7 +251,7 @@ export default function HomePage({ params: { locale } }: { params: { locale: str
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Built For Real Math Problems</h2>
             <p className="text-zinc-500 max-w-2xl mx-auto">
-              Whether you're solving homework problems, verifying research calculations, 
+              Whether you&apos;re solving homework problems, verifying research calculations, 
               or teaching linear algebra concepts, these tools adapt to your workflow.
             </p>
           </div>
@@ -392,9 +393,9 @@ export default function HomePage({ params: { locale } }: { params: { locale: str
                   </Link>
                 </li>
               </ul>
-            </div>
           </div>
         </div>
+      </div>
       </section>
     </main>
   );

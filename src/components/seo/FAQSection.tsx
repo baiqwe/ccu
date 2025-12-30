@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { useTranslations } from 'next-intl';
 import { usePathname } from 'next/navigation';
 import { generateFAQSchema, FAQItem } from '@/lib/faq-schema';
@@ -15,11 +15,11 @@ export const FAQSection: React.FC<FAQSectionProps> = ({ toolId, locale }) => {
   const pathname = usePathname();
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
-  const faqs: FAQItem[] = [
+  const faqs: FAQItem[] = useMemo(() => [
     { question: t(`${toolId}.q1`), answer: t(`${toolId}.a1`) },
     { question: t(`${toolId}.q2`), answer: t(`${toolId}.a2`) },
     { question: t(`${toolId}.q3`), answer: t(`${toolId}.a3`) }
-  ];
+  ], [toolId, t]);
 
   // Generate FAQ Schema
   useEffect(() => {
