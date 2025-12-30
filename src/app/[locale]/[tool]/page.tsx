@@ -2,9 +2,12 @@ import { notFound } from 'next/navigation';
 import { getTranslations, unstable_setRequestLocale } from 'next-intl/server';
 import { toolsConfig, findToolIdBySlug } from '@/lib/tools-config';
 import { generateJsonLd, generateBreadcrumbSchema } from '@/lib/seo-schema';
+import { getCanonicalUrl } from '@/lib/site-config';
 import { CalculatorWrapper } from '@/components/calculators/CalculatorWrapper';
 import { FAQSection } from '@/components/seo/FAQSection';
 import { RelatedTools } from '@/components/seo/RelatedTools';
+import { ArticleSection } from '@/components/seo/ArticleSection';
+import { BreadcrumbNav } from '@/components/seo/BreadcrumbNav';
 
 export async function generateStaticParams() {
   const params: Array<{ locale: string; tool: string }> = [];
@@ -25,15 +28,16 @@ export async function generateMetadata({ params: { locale, tool } }: { params: {
   if (!toolId) return {};
 
   const t = await getTranslations({ locale, namespace: `Metadata.${toolId}` });
+  const config = toolsConfig[toolId as keyof typeof toolsConfig];
 
   return {
     title: t('title'),
     description: t('description'),
     alternates: {
-      canonical: `https://domain.com/${locale}/${tool}`,
+      canonical: getCanonicalUrl(`/${locale}/${tool}`),
       languages: {
-        en: `https://domain.com/en/${toolsConfig[toolId as keyof typeof toolsConfig].slugs.en}`,
-        es: `https://domain.com/es/${toolsConfig[toolId as keyof typeof toolsConfig].slugs.es}`,
+        en: getCanonicalUrl(`/en/${config.slugs.en}`),
+        es: getCanonicalUrl(`/es/${config.slugs.es}`),
       },
     },
   };
@@ -67,11 +71,21 @@ export default async function ToolPage({ params: { locale, tool } }: { params: {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
 
+      <BreadcrumbNav
+        locale={locale}
+        items={[
+          { label: locale === 'en' ? 'Home' : 'Inicio', href: `/${locale}` },
+          { label: t('h1'), href: `/${locale}/${tool}` }
+        ]}
+      />
+
       <h1 className="text-3xl md:text-5xl font-bold mb-6 text-center text-gray-800">
         {t('h1')}
       </h1>
 
       <CalculatorWrapper toolId={toolId} />
+
+      <ArticleSection toolId={toolId} locale={locale} />
 
       <FAQSection toolId={toolId} />
 

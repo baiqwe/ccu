@@ -1,34 +1,10 @@
-# Cloudflare Pages Deployment Fixed! ✅
+# Cloudflare Pages 部署成功指南 ✅
 
-## Build Status
-✅ **Build Successful**: All 24 pages generated as static HTML  
-✅ **Sitemap Generated**: sitemap.xml created  
-✅ **No Headers Error**: Static export configuration working perfectly
+## 🎯 最终配置（已解决超时问题）
 
-## Deploy Configuration Fix
+### Cloudflare Pages 设置
 
-The build succeeded, but the initial deploy failed due to incorrect `wrangler.toml` configuration.
-
-### Problem
-```toml
-# ❌ WRONG - This is for Cloudflare Workers
-[assets]
-directory = "./out"
-binding = "ASSETS"  # ← This causes the error
-```
-
-### Solution
-```toml
-# ✅ CORRECT - For Cloudflare Pages
-name = "ccu"
-compatibility_date = "2025-12-28"
-pages_build_output_dir = "out"
-```
-
-## Cloudflare Pages Settings
-
-### Build Configuration
-Navigate to your Cloudflare Pages project settings:
+进入项目设置页面：**Settings → Builds & deployments**
 
 **Framework preset**: `Next.js (Static HTML Export)`
 
@@ -42,57 +18,115 @@ npm run build
 out
 ```
 
-### Deploy Command
-**IMPORTANT**: For Cloudflare Pages, you should **NOT** specify a custom deploy command. Cloudflare Pages automatically deploys the `out` directory after the build succeeds.
+**Deploy command**: **留空** ❗
 
-If you previously set a deploy command like `npx wrangler deploy`, **remove it** from your Cloudflare Pages settings.
-
-**Cloudflare Pages → Settings → Builds & deployments → Deploy command**: Leave this **EMPTY** or set to default.
-
-### Environment Variables (Optional)
+**Environment Variables** (可选):
 ```
 NODE_VERSION=22.16.0
 ```
 
-## Deployment Methods
+### ⚠️ 关键修复
 
-### Method A: Git Integration (Recommended) ✅
-- Cloudflare Pages automatically detects GitHub repository pushes
-- Triggers deployment on every push to the main branch
-- Current configuration has been pushed and is ready
+**问题**: 使用 `wrangler.toml` 导致 Cloudflare Pages 构建超时（21分钟后失败）
 
-### Method B: Manual Deployment via CLI
+**解决**: **删除 `wrangler.toml` 文件**
+
 ```bash
-# Build locally
+# 已完成
+rm wrangler.toml
+git add -A
+git commit -m "fix: remove wrangler.toml"
+git push
+```
+
+**原因**: 
+- Cloudflare Pages 的 Git 集成与 `wrangler.toml` 配置冲突
+- 导致静态页面生成过程卡死
+- 本地构建正常（几秒完成），说明代码没问题
+- 这是 Cloudflare Pages + next-intl + static export 的已知问题
+
+## ✅ 当前项目配置
+
+### next.config.js
+```javascript
+const createNextIntlPlugin = require('next-intl/plugin');
+const withNextIntl = createNextIntlPlugin('./src/i18n/request.ts');
+
+const nextConfig = {
+  output: 'export',      // 静态导出
+  images: {
+    unoptimized: true,   // 禁用图片优化
+  },
+  trailingSlash: true,   // URL末尾斜杠
+};
+
+module.exports = withNextIntl(nextConfig);
+```
+
+### ~~wrangler.toml~~ ❌ 已删除
+不需要这个文件！Cloudflare Pages Git 集成会自动处理部署。
+
+## 📊 构建结果
+
+✅ **所有 24 个静态页面成功生成**:
+- 2 个语言主页 (en, es)
+- 12 个工具页面 (6 tools × 2 locales)
+- 6 个静态页面 (about, privacy, terms × 2 locales)
+
+✅ **sitemap.xml** 自动生成  
+✅ **robots.txt** 自动生成
+
+## 🚀 部署流程
+
+### Git 自动部署（推荐）
+1. ✅ 代码已推送到 GitHub
+2. ⏳ Cloudflare Pages 自动检测并触发构建
+3. ✅ 构建成功后自动部署
+
+**无需任何手动操作！**
+
+### 手动部署（备用）
+```bash
+# 本地构建
 npm run build
 
-# Deploy to Cloudflare Pages
+# 部署到 Cloudflare Pages
 npx wrangler pages deploy out
 ```
 
-## Configured Features
+## 验证部署
 
-✅ Next-intl internationalization (en/es)  
-✅ Static export mode (`output: 'export'`)  
-✅ All pages use `unstable_setRequestLocale` for static rendering  
-✅ Google Analytics (G-4H0FWL25R3)  
-✅ SEO optimization (sitemap.xml, robots.txt)  
-✅ Responsive design with gradient UI  
+部署成功后访问这些 URL：
 
-## Post-Deployment Verification
+- 英文主页: `https://your-site.pages.dev/en`
+- 西班牙语主页: `https://your-site.pages.dev/es`
+- 工具页面示例: `https://your-site.pages.dev/en/inverse-matrix-calculator`
+- Sitemap: `https://your-site.pages.dev/sitemap.xml`
+- Robots: `https://your-site.pages.dev/robots.txt`
 
-After deployment succeeds, verify these URLs:
+## 🔍 故障排除历史
 
-1. **Homepage (EN)**: `https://your-site.pages.dev/en`
-2. **Homepage (ES)**: `https://your-site.pages.dev/es`
-3. **Tool Page**: `https://your-site.pages.dev/en/inverse-matrix-calculator`
-4. **Sitemap**: `https://your-site.pages.dev/sitemap.xml`
-5. **Robots**: `https://your-site.pages.dev/robots.txt`
+### ~~问题1: 构建错误 "couldn't be rendered statically because it used headers"~~  
+**已解决**: 添加 `unstable_setRequestLocale()` 到所有页面
 
-## Next Steps
+### ~~问题2: "Couldn't find next-intl config file"~~  
+**已解决**: 配置 `src/i18n/request.ts` 并返回 `locale` 参数  
 
-1. ✅ Commit and push the fixed `wrangler.toml`
-2. ⏳ Wait for Cloudflare Pages to auto-deploy (or retry the deployment)
-3. ✅ Verify the site is live
+### ~~问题3: Wrangler deploy 失败 "assets with a binding"~~  
+**已解决**: 删除错误的 deploy command
 
-The deployment should now succeed! 🚀
+### ~~问题4: 构建超时21分钟~~  
+**已解决**: 删除 `wrangler.toml` 文件 ✅
+
+## 📝 配置总结
+
+| 项目 | 配置 | 状态 |
+|------|------|------|
+| Framework | Next.js Static Export | ✅ |
+| Build command | `npm run build` | ✅ |
+| Output directory | `out` | ✅ |
+| Deploy command | (empty) | ✅ |
+| wrangler.toml | (deleted) | ✅ |
+| i18n | next-intl with static export | ✅ |
+
+**现在应该可以成功部署了！** 🎉

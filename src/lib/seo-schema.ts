@@ -1,4 +1,5 @@
 import { toolsConfig } from './tools-config';
+import { getCanonicalUrl } from './site-config';
 
 export interface JsonLdProps {
   toolId: string;
@@ -23,7 +24,7 @@ export function generateJsonLd({ toolId, locale, description }: JsonLdProps) {
     },
     description: description || '',
     inLanguage: locale,
-    url: `https://domain.com/${locale}/${config.slugs[locale as keyof typeof config.slugs]}`
+    url: getCanonicalUrl(`/${locale}/${config.slugs[locale as keyof typeof config.slugs]}`)
   };
 
   return jsonLd;
@@ -34,10 +35,11 @@ export interface BreadcrumbProps {
   toolId?: string;
   toolSlug?: string;
   toolName?: string;
+  pageName?: string;
+  pagePath?: string;
 }
 
-export function generateBreadcrumbSchema({ locale, toolId, toolSlug, toolName }: BreadcrumbProps) {
-  const baseUrl = 'https://domain.com';
+export function generateBreadcrumbSchema({ locale, toolId, toolSlug, toolName, pageName, pagePath }: BreadcrumbProps) {
   const homeLabel = locale === 'en' ? 'Home' : 'Inicio';
   
   const itemListElement = [
@@ -45,7 +47,7 @@ export function generateBreadcrumbSchema({ locale, toolId, toolSlug, toolName }:
       '@type': 'ListItem',
       position: 1,
       name: homeLabel,
-      item: `${baseUrl}/${locale}`
+      item: getCanonicalUrl(`/${locale}`)
     }
   ];
 
@@ -55,7 +57,17 @@ export function generateBreadcrumbSchema({ locale, toolId, toolSlug, toolName }:
       '@type': 'ListItem',
       position: 2,
       name: toolName,
-      item: `${baseUrl}/${locale}/${toolSlug}`
+      item: getCanonicalUrl(`/${locale}/${toolSlug}`)
+    });
+  }
+
+  // Add static page (Privacy, Terms, About) as breadcrumb item if provided
+  if (pageName && pagePath) {
+    itemListElement.push({
+      '@type': 'ListItem',
+      position: itemListElement.length + 1,
+      name: pageName,
+      item: getCanonicalUrl(`/${locale}/${pagePath}`)
     });
   }
 

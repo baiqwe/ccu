@@ -1,6 +1,8 @@
 /** @type {import('next-sitemap').IConfig} */
+const siteUrl = process.env.SITE_URL || process.env.NEXT_PUBLIC_SITE_URL || 'https://www.your-actual-domain.com';
+
 module.exports = {
-    siteUrl: process.env.SITE_URL || 'https://domain.com',
+    siteUrl: siteUrl.replace(/\/$/, ''),
     generateRobotsTxt: true,
     generateIndexSitemap: false,
     robotsTxtOptions: {
@@ -14,11 +16,11 @@ module.exports = {
     exclude: [],
     alternateRefs: [
         {
-            href: 'https://domain.com/en',
+            href: `${siteUrl.replace(/\/$/, '')}/en`,
             hreflang: 'en',
         },
         {
-            href: 'https://domain.com/es',
+            href: `${siteUrl.replace(/\/$/, '')}/es`,
             hreflang: 'es',
         },
     ],

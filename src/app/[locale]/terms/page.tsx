@@ -1,4 +1,7 @@
 import { getTranslations, unstable_setRequestLocale } from 'next-intl/server';
+import { getCanonicalUrl } from '@/lib/site-config';
+import { generateBreadcrumbSchema } from '@/lib/seo-schema';
+import { BreadcrumbNav } from '@/components/seo/BreadcrumbNav';
 
 export async function generateMetadata({ params: { locale } }: { params: { locale: string } }) {
     const t = await getTranslations({ locale, namespace: 'Terms' });
@@ -6,15 +9,41 @@ export async function generateMetadata({ params: { locale } }: { params: { local
     return {
         title: t('title'),
         description: t('description'),
+        alternates: {
+            canonical: getCanonicalUrl(`/${locale}/terms`),
+            languages: {
+                en: getCanonicalUrl('/en/terms'),
+                es: getCanonicalUrl('/es/terms'),
+            },
+        },
     };
 }
 
 export default async function TermsPage({ params: { locale } }: { params: { locale: string } }) {
     unstable_setRequestLocale(locale);
     const t = await getTranslations({ locale, namespace: 'Terms' });
+    
+    const breadcrumbSchema = generateBreadcrumbSchema({
+        locale,
+        pageName: t('title'),
+        pagePath: 'terms'
+    });
 
     return (
         <main className="container mx-auto px-4 py-12 max-w-4xl">
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+            />
+
+            <BreadcrumbNav
+                locale={locale}
+                items={[
+                    { label: locale === 'en' ? 'Home' : 'Inicio', href: `/${locale}` },
+                    { label: t('title'), href: `/${locale}/terms` }
+                ]}
+            />
+
             <h1 className="text-4xl font-bold text-gray-800 mb-8">{t('title')}</h1>
 
             <div className="prose prose-slate max-w-none">
