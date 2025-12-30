@@ -88,10 +88,12 @@ export const CalculatorWrapper: React.FC<CalculatorWrapperProps> = ({ toolId }) 
   };
 
   const handleClear = () => {
-    setMatrixA(Array(matrixSize).fill(null).map(() => Array(matrixSize).fill(0)));
-    setMatrixB(Array(matrixSize).fill(null).map(() => Array(matrixSize).fill(0)));
+    const emptyMatrix = Array(matrixSize).fill(null).map(() => Array(matrixSize).fill(0));
+    setMatrixA(emptyMatrix);
+    setMatrixB(emptyMatrix);
     setConstants(Array(matrixSize).fill(0));
     setResult(null);
+    setFocusedCell(null); // Clear focus when clearing
   };
 
   const handleKeypadInput = (value: string) => {
@@ -393,6 +395,9 @@ export const CalculatorWrapper: React.FC<CalculatorWrapperProps> = ({ toolId }) 
             columns={matrixSize}
             values={matrixA}
             onChange={setMatrixA}
+            onFocus={(row, col) => setFocusedCell({ row, col, matrix: 'A' })}
+            onBlur={() => setFocusedCell(null)}
+            matrixId="A"
           />
         </div>
 
@@ -404,6 +409,9 @@ export const CalculatorWrapper: React.FC<CalculatorWrapperProps> = ({ toolId }) 
               columns={matrixSize}
               values={matrixB}
               onChange={setMatrixB}
+              onFocus={(row, col) => setFocusedCell({ row, col, matrix: 'B' })}
+              onBlur={() => setFocusedCell(null)}
+              matrixId="B"
             />
           </div>
         )}
