@@ -52,6 +52,33 @@ export const toolsConfig = {
     },
     category: 'long-tail',
     relatedTools: ['rref', 'determinant']
+  },
+  'system-equations': {
+    name: 'System of Linear Equations Solver',
+    slugs: {
+      en: 'system-of-equations-solver',
+      es: 'resolvedor-sistema-ecuaciones'
+    },
+    category: 'high-value',
+    relatedTools: ['rref', 'cramers-rule']
+  },
+  'cramers-rule': {
+    name: "Cramer's Rule Calculator",
+    slugs: {
+      en: 'cramers-rule-calculator',
+      es: 'calculadora-regla-cramer'
+    },
+    category: 'high-value',
+    relatedTools: ['determinant', 'system-equations']
+  },
+  'matrix-power': {
+    name: 'Matrix Power Calculator',
+    slugs: {
+      en: 'matrix-power-calculator',
+      es: 'calculadora-potencia-matriz'
+    },
+    category: 'high-value',
+    relatedTools: ['multiplication', 'inverse']
   }
 };
 

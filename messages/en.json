@@ -1,34 +1,49 @@
 {
   "Metadata": {
     "inverse": {
-      "title": "Inverse Matrix Calculator with Steps (2x2, 3x3, 4x4) - Free",
+      "title": "Inverse Matrix Calculator & Solver with Steps (2x2, 3x3, 4x4) - Free",
       "description": "Calculate the inverse matrix instantly with detailed step-by-step explanations. Supports Adjoint and Gauss-Jordan methods. Perfect for linear algebra homework.",
-      "h1": "Inverse Matrix Calculator"
+      "h1": "Inverse Matrix Calculator & Solver"
     },
     "rref": {
-      "title": "RREF Calculator with Steps - Reduced Row Echelon Form",
+      "title": "RREF Calculator & Solver with Steps - Reduced Row Echelon Form",
       "description": "Solve systems of linear equations using this RREF calculator. Shows every row operation step-by-step to help you learn.",
-      "h1": "Reduced Row Echelon Form (RREF) Calculator"
+      "h1": "Reduced Row Echelon Form (RREF) Calculator & Solver"
     },
     "multiplication": {
-      "title": "Matrix Multiplication Calculator (Dot Product)",
+      "title": "Matrix Multiplication Calculator & Solver (Dot Product)",
       "description": "Multiply matrices instantly with this free calculator. Supports 2x2, 3x3, and larger matrices. Perfect for engineering and data science.",
-      "h1": "Matrix Multiplication Calculator"
+      "h1": "Matrix Multiplication Calculator & Solver"
     },
     "determinant": {
-      "title": "Matrix Determinant Calculator with Steps",
+      "title": "Matrix Determinant Calculator & Solver with Steps",
       "description": "Calculate the determinant of any matrix with step-by-step explanations. Supports 2x2, 3x3, 4x4 matrices and beyond.",
-      "h1": "Matrix Determinant Calculator"
+      "h1": "Matrix Determinant Calculator & Solver"
     },
     "eigenvalue": {
-      "title": "Eigenvalue Calculator with Steps",
+      "title": "Eigenvalue Calculator & Solver with Steps",
       "description": "Find eigenvalues and eigenvectors of matrices with detailed step-by-step solutions. Perfect for linear algebra students.",
-      "h1": "Eigenvalue Calculator"
+      "h1": "Eigenvalue Calculator & Solver"
     },
     "rank": {
-      "title": "Matrix Rank Calculator",
+      "title": "Matrix Rank Calculator & Solver",
       "description": "Calculate the rank of a matrix instantly. Shows the row reduction steps to find the rank.",
-      "h1": "Matrix Rank Calculator"
+      "h1": "Matrix Rank Calculator & Solver"
+    },
+    "system-equations": {
+      "title": "System of Linear Equations Solver with Steps - Free Calculator",
+      "description": "Solve systems of linear equations using Gaussian elimination. Enter coefficients as an augmented matrix and get step-by-step solutions with exact fractions.",
+      "h1": "System of Linear Equations Solver"
+    },
+    "cramers-rule": {
+      "title": "Cramer's Rule Calculator with Steps - Free Solver",
+      "description": "Solve systems of linear equations using Cramer's rule. Calculate determinants step-by-step to find solutions. Perfect for 2x2 and 3x3 systems.",
+      "h1": "Cramer's Rule Calculator"
+    },
+    "matrix-power": {
+      "title": "Matrix Power Calculator (A^n) with Steps - Free",
+      "description": "Calculate matrix powers A^2, A^3, A^n with step-by-step solutions. Shows each multiplication step. Supports any square matrix.",
+      "h1": "Matrix Power Calculator"
     }
   },
   "Common": {
@@ -199,6 +214,112 @@
       "calculation": "The most reliable method for finding rank is using row reduction to [rref]:\n\n**Method: Row Reduction to RREF**\n\n1. Convert the matrix to Reduced Row Echelon Form using Gaussian-Jordan elimination\n2. Count the number of non-zero rows (rows with pivots)\n3. This number is the rank of the matrix\n\n**Why This Works:**\n\n- Row operations don't change the row space (the span of the rows)\n- In RREF, the non-zero rows are clearly linearly independent\n- The number of pivots equals the dimension of both the row space and column space\n\n**Alternative: Column Reduction**\n\nYou can also reduce columns instead of rows, but row reduction is more standard.\n\n**Quick Check Methods:**\n\n- For a square matrix: If you can reduce it to the identity matrix, rank = matrix size (full rank)\n- If a row or column is all zeros, it doesn't contribute to rank\n- If one row/column is a multiple of another, the rank is reduced\n\n**Example:**\n\nFor the matrix [1 2 3; 2 4 6; 0 1 1]:\n- Row 2 is 2×Row 1, so it's linearly dependent\n- Reducing to RREF gives [1 0 1; 0 1 1; 0 0 0]\n- There are 2 non-zero rows, so rank = 2",
       "applicationsTitle": "Applications of Matrix Rank",
       "applications": "Matrix rank appears throughout linear algebra and its applications:\n\n**1. Solving Systems of Equations**: For the system Ax = b:\n- If rank(A) = rank([A|b]) = n (number of variables), there's a unique solution\n- If rank(A) = rank([A|b]) < n, there are infinitely many solutions\n- If rank(A) < rank([A|b]), there's no solution (inconsistent system)\n\nThe rank-nullity theorem: rank(A) + nullity(A) = number of columns\n\n**2. Matrix Invertibility**: A square n×n matrix has an [inverse] if and only if rank(A) = n (full rank). If rank(A) < n, the [determinant] is zero and the matrix is singular.\n\n**3. Linear Independence**: The rank tells you how many vectors in a set are linearly independent. If you have m vectors in n-dimensional space, and rank = m, they're all independent.\n\n**4. Dimension of Subspaces**: \n- Column space dimension = rank(A)\n- Row space dimension = rank(A)\n- Null space dimension = n - rank(A) (nullity)\n\n**5. Data Analysis**: In machine learning, the rank of a data matrix indicates the intrinsic dimensionality of the dataset. Low rank suggests redundancy or that data lies in a lower-dimensional subspace.\n\n**6. Control Theory**: The rank of controllability and observability matrices determines whether a system can be controlled or observed.\n\n**7. Network Analysis**: In graph theory, the rank of incidence matrices relates to connectivity properties of networks.\n\n**8. Compression**: Low-rank matrix approximations are used in image compression, recommender systems, and dimensionality reduction techniques."
+    },
+    "system-equations": {
+      "title": "System of Linear Equations Solver: Complete Guide",
+      "introduction": "Solving systems of linear equations is one of the most fundamental problems in linear algebra. Whether you're working with 2 equations and 2 unknowns or larger systems, understanding how to solve them systematically is essential. This guide covers the augmented matrix method using [rref] (Gaussian elimination) to solve any system of linear equations.\n\nOur calculator uses the same method taught in university courses: convert the system to an augmented matrix, apply row operations to reach RREF, and read the solution directly from the result.",
+      "definitionTitle": "What is a System of Linear Equations?",
+      "definition": "A system of linear equations is a collection of equations of the form:\n\na₁₁x₁ + a₁₂x₂ + ... + a₁ₙxₙ = b₁\na₂₁x₁ + a₂₂x₂ + ... + a₂ₙxₙ = b₂\n...\naₘ₁x₁ + aₘ₂x₂ + ... + aₘₙxₙ = bₘ\n\nIn matrix form, this becomes Ax = B, where:\n- A is the coefficient matrix (m×n)\n- x is the variable vector (n×1)\n- B is the constants vector (m×1)\n\n**Types of Solutions:**\n- **Unique Solution**: Exactly one solution exists (consistent and independent system)\n- **Infinitely Many Solutions**: Free variables exist (consistent but dependent system)\n- **No Solution**: The system is inconsistent (contradictory equations)",
+      "calculationTitle": "How to Solve Systems Using Augmented Matrix Method",
+      "calculation": "The augmented matrix method is the most systematic approach:\n\n**Step 1: Form the Augmented Matrix**\n\nWrite the system Ax = B as [A | B], where the vertical bar separates coefficients from constants.\n\n**Step 2: Apply Gaussian Elimination**\n\nUse row operations to convert the augmented matrix to [rref] (Reduced Row Echelon Form):\n\n1. **Forward Elimination**: Make all entries below each pivot zero\n2. **Scale Pivots**: Make each pivot equal to 1\n3. **Backward Elimination**: Make all entries above each pivot zero\n\n**Step 3: Read the Solution**\n\nFrom the RREF form:\n- Each pivot column corresponds to a basic variable\n- The rightmost column gives the values\n- If a row is all zeros except the last column (non-zero), the system has no solution\n- If there are fewer pivots than variables, free variables exist (infinite solutions)\n\nThis method is equivalent to using [rref] techniques and works for any system size.",
+      "applicationsTitle": "Applications of Solving Linear Systems",
+      "applications": "Systems of linear equations appear everywhere in mathematics and science:\n\n**1. Engineering Problems**: Circuit analysis, structural engineering, and optimization problems all reduce to solving linear systems.\n\n**2. Economics**: Input-output models, supply and demand analysis, and economic forecasting use systems of equations.\n\n**3. Computer Graphics**: 3D transformations, ray tracing, and solving for intersection points require solving linear systems.\n\n**4. Data Science**: Linear regression, least squares fitting, and many machine learning algorithms solve systems of equations.\n\n**5. Physics**: Balancing chemical equations, solving for forces in statics, and many physics problems are linear systems.\n\n**6. Game Development**: Collision detection, pathfinding, and physics simulations often require solving linear systems.\n\n**7. Cryptography**: Some encryption methods involve solving systems of linear equations over finite fields.\n\n**8. Network Analysis**: Traffic flow, electrical networks, and social network analysis all use linear systems."
+    },
+    "cramers-rule": {
+      "title": "Cramer's Rule Calculator: Step-by-Step Guide",
+      "introduction": "Cramer's Rule is an elegant method for solving systems of linear equations using [determinant]s. While it's computationally expensive for large systems, it's perfect for 2×2 and 3×3 systems and provides a clear, formula-based approach that many students find intuitive.\n\nThis guide explains what Cramer's Rule is, when it can be used, and how to apply it step-by-step. Our calculator shows every [determinant] calculation, making it easy to understand the process.",
+      "definitionTitle": "What is Cramer's Rule?",
+      "definition": "Cramer's Rule provides an explicit formula for solving the system Ax = B when A is a square, invertible matrix (det(A) ≠ 0).\n\nFor a system of n equations with n unknowns:\n\nx₁ = Dx₁ / D\nx₂ = Dx₂ / D\n...\nxₙ = Dxₙ / D\n\nWhere:\n- D = det(A) is the [determinant] of the coefficient matrix\n- Dxᵢ = det(Aᵢ) is the [determinant] of matrix A with column i replaced by the constants vector B\n\n**When Cramer's Rule Works:**\n- The system must have the same number of equations as unknowns (square coefficient matrix)\n- The coefficient matrix must be invertible (det(A) ≠ 0)\n- Best for 2×2 and 3×3 systems (computationally efficient)\n- For larger systems, [rref] methods are more practical",
+      "calculationTitle": "How to Apply Cramer's Rule Step-by-Step",
+      "calculation": "**Step 1: Calculate Determinant D**\n\nFind the [determinant] of the coefficient matrix A. If D = 0, Cramer's Rule cannot be applied (the system has no unique solution or is inconsistent).\n\n**Step 2: Calculate Dx, Dy, Dz, etc.**\n\nFor each variable xᵢ:\n1. Replace column i in matrix A with the constants vector B\n2. Calculate the [determinant] of this new matrix\n3. This gives you Dxᵢ\n\n**Step 3: Apply the Formula**\n\nDivide each Dxᵢ by D to get the solution:\n\nxᵢ = Dxᵢ / D\n\n**Example for 2×2 System:**\n\nFor the system:\nax + by = e\ncx + dy = f\n\nD = ad - bc\nDx = ed - bf\nDy = af - ec\n\nx = Dx / D, y = Dy / D\n\n**Advantages:**\n- Direct formula, no row operations needed\n- Clear relationship between [determinant]s and solutions\n- Works well for symbolic calculations\n\n**Disadvantages:**\n- Requires calculating n+1 [determinant]s (computationally expensive for large n)\n- Only works for square, invertible systems\n- For n > 3, [rref] methods are faster",
+      "applicationsTitle": "When to Use Cramer's Rule",
+      "applications": "Cramer's Rule is particularly useful in these scenarios:\n\n**1. Small Systems (2×2, 3×3)**: When you have 2 or 3 equations, Cramer's Rule is often the fastest method and provides clear formulas.\n\n**2. Symbolic Calculations**: When working with variables instead of numbers, Cramer's Rule gives explicit formulas that are easy to manipulate algebraically.\n\n**3. Teaching and Learning**: Cramer's Rule helps students understand the relationship between [determinant]s and solutions, making it valuable for educational purposes.\n\n**4. Theoretical Analysis**: In proofs and theoretical work, Cramer's Rule provides explicit expressions that are useful for analysis.\n\n**5. Special Cases**: When you need to solve for just one variable in a system, Cramer's Rule lets you calculate only the relevant [determinant]s.\n\n**6. Computer Algebra Systems**: Symbolic math software often uses Cramer's Rule for small systems because it provides exact symbolic solutions.\n\n**When NOT to Use Cramer's Rule:**\n- Systems larger than 3×3 (use [rref] instead)\n- When the coefficient matrix is singular (det = 0)\n- When computational efficiency is critical\n- For systems with more equations than unknowns or vice versa"
+    },
+    "matrix-power": {
+      "title": "Matrix Power Calculator: Computing A^n",
+      "introduction": "Computing matrix powers (A², A³, Aⁿ) is essential in many areas of mathematics, from Markov chains to solving systems of differential equations. While the concept is simple—multiply A by itself n times—the calculations can become tedious for large powers or large matrices.\n\nThis guide explains how matrix powers work, when they're useful, and how to compute them efficiently. Our calculator shows each multiplication step, making it easy to understand the process.",
+      "definitionTitle": "What is a Matrix Power?",
+      "definition": "For a square matrix A, the power Aⁿ (where n is a non-negative integer) is defined as:\n\nAⁿ = A × A × ... × A (n times)\n\n**Special Cases:**\n- A⁰ = I (the identity matrix)\n- A¹ = A\n- A² = A × A\n- A³ = A² × A = A × A × A\n\n**Key Properties:**\n- (Aⁿ)ᵐ = Aⁿᵐ (power of a power)\n- Aⁿ × Aᵐ = Aⁿ⁺ᵐ (multiplying powers)\n- (AB)ⁿ ≠ AⁿBⁿ in general (matrix multiplication is not commutative)\n- If A is invertible, (A⁻¹)ⁿ = (Aⁿ)⁻¹\n- For diagonalizable matrices, powers can be computed more efficiently using eigenvalues",
+      "calculationTitle": "How to Calculate Matrix Powers",
+      "calculation": "**Method 1: Direct Multiplication (for small powers)**\n\nFor small values of n, simply multiply A by itself repeatedly:\n\n1. Start with A¹ = A\n2. Calculate A² = A × A using [multiplication]\n3. Calculate A³ = A² × A\n4. Continue until you reach Aⁿ\n\n**Method 2: Exponentiation by Squaring (for large powers)**\n\nFor large n, use the binary representation:\n\n- If n is even: Aⁿ = (Aⁿ/²)²\n- If n is odd: Aⁿ = A × (A⁽ⁿ⁻¹⁾/²)²\n\nThis reduces the number of multiplications from n-1 to approximately log₂(n).\n\n**Method 3: Diagonalization (for diagonalizable matrices)**\n\nIf A = PDP⁻¹ where D is diagonal:\n- Aⁿ = PDⁿP⁻¹\n- Dⁿ is simply raising each diagonal element to the power n\n\n**Our Calculator's Approach:**\n\nWe use Method 1 (direct multiplication) and show each step, making it easy to follow the process. For powers greater than 5, we recommend using diagonalization or exponentiation by squaring for efficiency.",
+      "applicationsTitle": "Applications of Matrix Powers",
+      "applications": "Matrix powers are fundamental in many mathematical and scientific fields:\n\n**1. Markov Chains**: In probability theory, the n-step transition probabilities in a Markov chain are given by Pⁿ, where P is the transition matrix. This tells you the probability of moving from one state to another in n steps.\n\n**2. Systems of Differential Equations**: Solutions to systems like dx/dt = Ax involve matrix exponentials, which are computed using matrix powers in the series expansion: e^A = I + A + A²/2! + A³/3! + ...\n\n**3. Graph Theory**: The (i,j) entry of Aⁿ gives the number of paths of length n from vertex i to vertex j in a graph.\n\n**4. Population Dynamics**: In biology and ecology, matrix powers model population growth over multiple generations.\n\n**5. Computer Graphics**: Repeated transformations (rotations, scaling) are computed using matrix powers.\n\n**6. Cryptography**: Some encryption algorithms use matrix powers over finite fields.\n\n**7. Network Analysis**: Powers of adjacency matrices reveal connectivity and path information in networks.\n\n**8. Control Theory**: In discrete-time systems, the state after n steps is x(n) = Aⁿx(0), where A is the system matrix."
+    }
+  },
+  "FAQ": {
+    "inverse": {
+      "q1": "What is an inverse matrix?",
+      "a1": "An inverse matrix A⁻¹ is a matrix such that A × A⁻¹ = A⁻¹ × A = I, where I is the identity matrix. Not all matrices have inverses—only square matrices with non-zero determinants are invertible.",
+      "q2": "How do you find the inverse of a 2×2 matrix?",
+      "a2": "For a 2×2 matrix A = [a b; c d], the inverse is A⁻¹ = (1/(ad-bc)) × [d -b; -c a], provided that ad-bc ≠ 0 (the determinant is non-zero).",
+      "q3": "What if a matrix has no inverse?",
+      "a3": "A matrix has no inverse (is singular) if its determinant is zero. This means the matrix represents a transformation that collapses space, and you cannot reverse it. In such cases, the system of equations Ax = b either has no solution or infinitely many solutions."
+    },
+    "rref": {
+      "q1": "What is reduced row echelon form?",
+      "a1": "Reduced row echelon form (RREF) is a special form of a matrix with these properties: 1) All zero rows are at the bottom, 2) The leading entry (pivot) in each non-zero row is 1, 3) Each leading 1 is the only non-zero entry in its column, 4) Each leading 1 appears to the right of the leading 1 in the row above.",
+      "q2": "How to convert a matrix to RREF?",
+      "a2": "Use Gaussian-Jordan elimination: 1) Start with row echelon form using forward elimination, 2) Scale each pivot row so the leading entry becomes 1, 3) Eliminate all entries above each pivot by adding multiples of the pivot row to rows above it, 4) Continue until all conditions for RREF are satisfied.",
+      "q3": "What is the difference between REF and RREF?",
+      "a3": "Row Echelon Form (REF) requires only zeros below each pivot, while Reduced Row Echelon Form (RREF) requires zeros both above and below each pivot. RREF also requires that all pivots equal 1. RREF is unique for any matrix, while REF is not.",
+      "q4": "Why use RREF for solving systems?",
+      "a4": "RREF makes solving systems of linear equations trivial because the solution can be read directly from the final matrix. Each pivot column corresponds to a basic variable, and the rightmost column (in an augmented matrix) gives the values. It also clearly reveals whether a system has no solution, one solution, or infinitely many solutions."
+    },
+    "multiplication": {
+      "q1": "How do you multiply two matrices?",
+      "a1": "Matrix multiplication is done by taking the dot product of rows from the first matrix with columns from the second matrix. For matrices A (m×n) and B (n×p), the result C = AB is an m×p matrix where C[i][j] = sum of A[i][k] × B[k][j] for k from 1 to n.",
+      "q2": "Can you multiply any two matrices?",
+      "a2": "No. For matrix multiplication AB to be defined, the number of columns in A must equal the number of rows in B. The resulting matrix will have the number of rows from A and the number of columns from B.",
+      "q3": "Is matrix multiplication commutative?",
+      "a3": "No, matrix multiplication is not commutative. In general, AB ≠ BA. However, some special cases exist: if A and B are both diagonal matrices, or if one is the identity matrix, then AB = BA."
+    },
+    "determinant": {
+      "q1": "What is a matrix determinant?",
+      "a1": "The determinant is a scalar value that can be computed from a square matrix. It provides important information: if det(A) = 0, the matrix is singular (not invertible). If det(A) ≠ 0, the matrix is invertible. The determinant also represents the scaling factor of the linear transformation represented by the matrix.",
+      "q2": "How do you calculate the determinant of a 2×2 matrix?",
+      "a2": "For a 2×2 matrix [a b; c d], the determinant is ad - bc. This is the simplest case and serves as the base for calculating larger determinants using cofactor expansion.",
+      "q3": "What is cofactor expansion?",
+      "a3": "Cofactor expansion (Laplace expansion) is a method to calculate determinants by expanding along a row or column. For each element aᵢⱼ, you calculate its cofactor Cᵢⱼ = (-1)ⁱ⁺ʲ × Mᵢⱼ, where Mᵢⱼ is the minor (determinant of the submatrix). Then det(A) = sum of aᵢⱼ × Cᵢⱼ for any row i or column j."
+    },
+    "eigenvalue": {
+      "q1": "What are eigenvalues and eigenvectors?",
+      "a1": "An eigenvector v of a matrix A is a non-zero vector such that Av = λv, where λ is the eigenvalue. Eigenvectors represent directions that remain unchanged (except for scaling) under the linear transformation, and eigenvalues represent the scaling factors.",
+      "q2": "How do you find eigenvalues?",
+      "a2": "Eigenvalues are found by solving the characteristic equation det(A - λI) = 0. This gives a polynomial in λ called the characteristic polynomial. The roots of this polynomial are the eigenvalues.",
+      "q3": "What are eigenvalues used for?",
+      "a3": "Eigenvalues and eigenvectors are used in principal component analysis (PCA), Google's PageRank algorithm, quantum mechanics, vibration analysis, stability analysis, and many other applications in mathematics, physics, and computer science."
+    },
+    "rank": {
+      "q1": "What is the rank of a matrix?",
+      "a1": "The rank of a matrix is the maximum number of linearly independent rows (or columns). It equals the dimension of the column space and row space. For an m×n matrix, rank ≤ min(m, n).",
+      "q2": "How do you find the rank?",
+      "a2": "The most reliable method is to convert the matrix to reduced row echelon form (RREF) and count the number of non-zero rows (pivot rows). This number is the rank.",
+      "q3": "What does rank tell you about a system of equations?",
+      "a3": "For the system Ax = b: if rank(A) = rank([A|b]) = n (number of variables), there's a unique solution. If rank(A) = rank([A|b]) < n, there are infinitely many solutions. If rank(A) < rank([A|b]), there's no solution."
+    },
+    "system-equations": {
+      "q1": "How do you solve a system of linear equations?",
+      "a1": "The most systematic method is to convert the system to an augmented matrix [A|B] and use Gaussian elimination (row operations) to reduce it to RREF. The solution can then be read directly from the RREF matrix.",
+      "q2": "When does a system have no solution?",
+      "a2": "A system has no solution (is inconsistent) when, after reducing to RREF, you get a row of the form [0 0 ... 0 | c] where c ≠ 0. This represents an impossible equation like 0 = c.",
+      "q3": "When does a system have infinitely many solutions?",
+      "a3": "A system has infinitely many solutions when there are free variables—variables that don't correspond to pivot columns. In RREF, if the number of pivots is less than the number of variables, free variables exist and the system has infinitely many solutions."
+    },
+    "cramers-rule": {
+      "q1": "What is Cramer's Rule?",
+      "a1": "Cramer's Rule is a method for solving systems of linear equations using determinants. For a system Ax = B, each variable xᵢ = Dxᵢ/D, where D is the determinant of the coefficient matrix and Dxᵢ is the determinant with column i replaced by the constants vector.",
+      "q2": "When can you use Cramer's Rule?",
+      "a2": "Cramer's Rule only works for square systems (same number of equations as unknowns) where the coefficient matrix is invertible (determinant ≠ 0). It's most practical for 2×2 and 3×3 systems.",
+      "q3": "Why is Cramer's Rule not used for large systems?",
+      "a3": "Cramer's Rule requires calculating n+1 determinants for an n×n system, which is computationally expensive (O(n!) for each determinant). For systems larger than 3×3, Gaussian elimination (RREF) is much faster."
+    },
+    "matrix-power": {
+      "q1": "How do you calculate A^n for a matrix?",
+      "a1": "For small powers, multiply A by itself n times: A² = A × A, A³ = A² × A, etc. For large powers, use exponentiation by squaring or diagonalization for efficiency.",
+      "q2": "What is A^0 for any matrix?",
+      "a2": "A^0 = I (the identity matrix) for any square matrix A, just like any number raised to the power of 0 equals 1.",
+      "q3": "Can you compute negative powers?",
+      "a3": "Yes, if A is invertible, A⁻ⁿ = (A⁻¹)ⁿ. This requires first finding the inverse matrix, then raising it to the power n."
     }
   }
 }

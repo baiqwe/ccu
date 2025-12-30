@@ -90,7 +90,7 @@ export const MatrixInput: React.FC<MatrixInputProps> = ({
                   }
                 }}
                 type="text"
-                inputMode="none"
+                inputMode={readOnly ? "none" : "decimal"}
                 readOnly={readOnly}
                 value={value === 0 ? '' : value}
                 onChange={(e) => handleCellChange(rowIndex, colIndex, e.target.value)}

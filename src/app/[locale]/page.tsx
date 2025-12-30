@@ -14,7 +14,10 @@ export default function HomePage({ params: { locale } }: { params: { locale: str
     { id: 'multiplication', name: t('multiplication.h1'), slug: locale === 'en' ? 'matrix-multiplication-calculator' : 'calculadora-multiplicacion-matrices', desc: 'Dot product computation' },
     { id: 'determinant', name: t('determinant.h1'), slug: locale === 'en' ? 'determinant-calculator' : 'calculadora-determinante', desc: 'Cofactor expansion method' },
     { id: 'eigenvalue', name: t('eigenvalue.h1'), slug: locale === 'en' ? 'eigenvalue-calculator' : 'calculadora-valores-propios', desc: 'Characteristic polynomial roots' },
-    { id: 'rank', name: t('rank.h1'), slug: locale === 'en' ? 'rank-matrix-calculator' : 'calculadora-rango-matriz', desc: 'Linear independence analysis' }
+    { id: 'rank', name: t('rank.h1'), slug: locale === 'en' ? 'rank-matrix-calculator' : 'calculadora-rango-matriz', desc: 'Linear independence analysis' },
+    { id: 'system-equations', name: t('system-equations.h1'), slug: locale === 'en' ? 'system-of-equations-solver' : 'resolvedor-sistema-ecuaciones', desc: 'Gaussian elimination solver' },
+    { id: 'cramers-rule', name: t('cramers-rule.h1'), slug: locale === 'en' ? 'cramers-rule-calculator' : 'calculadora-regla-cramer', desc: 'Determinant-based solver' },
+    { id: 'matrix-power', name: t('matrix-power.h1'), slug: locale === 'en' ? 'matrix-power-calculator' : 'calculadora-potencia-matriz', desc: 'Compute A^n step-by-step' }
   ];
 
   return (
@@ -48,10 +51,10 @@ export default function HomePage({ params: { locale } }: { params: { locale: str
           {/* Main headline */}
           <h1 className="text-center mb-8">
             <span className="block text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight text-gray-900 mb-4">
-              Matrix Calculator
+              Online Matrix Calculator
             </span>
             <span className="block text-2xl md:text-3xl lg:text-4xl font-light text-gray-600">
-              with step-by-step mathematical proofs
+              with step-by-step solutions & exact fractions
             </span>
         </h1>
 
