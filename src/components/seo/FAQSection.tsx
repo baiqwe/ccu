@@ -31,7 +31,7 @@ export const FAQSection: React.FC<FAQSectionProps> = ({ toolId, locale }) => {
 
     if (schema) {
       const scriptId = 'faq-schema';
-      let script = document.getElementById(scriptId);
+      let script = document.getElementById(scriptId) as HTMLScriptElement | null;
       
       if (!script) {
         script = document.createElement('script');
