@@ -58,7 +58,7 @@ export default async function ToolPage({ params: { locale, tool } }: { params: {
   });
 
   return (
-    <main className="min-h-screen bg-[#0a0a0f] text-white">
+    <main className="min-h-screen bg-white">
       {jsonLd && (
         <script
           type="application/ld+json"
@@ -72,7 +72,7 @@ export default async function ToolPage({ params: { locale, tool } }: { params: {
       />
 
       {/* Header Section */}
-      <div className="border-b border-white/5 bg-[#0f0f15]">
+      <div className="border-b border-gray-200 bg-gradient-to-b from-purple-50/30 to-white">
         <div className="container mx-auto px-4 py-12">
           <BreadcrumbNav
             locale={locale}
@@ -83,10 +83,10 @@ export default async function ToolPage({ params: { locale, tool } }: { params: {
           />
           
           <div className="max-w-3xl mx-auto text-center mt-8">
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight">
+            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 tracking-tight">
               {t('h1')}
             </h1>
-            <p className="text-lg text-zinc-400">
+            <p className="text-lg text-gray-600">
               {t('description')}
             </p>
           </div>
@@ -95,7 +95,7 @@ export default async function ToolPage({ params: { locale, tool } }: { params: {
 
       <div className="container mx-auto px-4 py-12">
         {/* Calculator Card */}
-        <div className="max-w-5xl mx-auto bg-[#12121a] rounded-2xl border border-white/5 p-6 md:p-10 mb-16">
+        <div className="max-w-5xl mx-auto bg-white rounded-2xl border border-gray-200 shadow-lg p-6 md:p-10 mb-16">
           <CalculatorWrapper toolId={toolId} />
         </div>
 
@@ -103,20 +103,20 @@ export default async function ToolPage({ params: { locale, tool } }: { params: {
         <div className="grid lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
           <div className="lg:col-span-2 space-y-8">
             {/* Article Section */}
-            <div className="bg-[#12121a] rounded-2xl border border-white/5 p-8">
+            <div className="bg-white rounded-2xl border border-gray-200 shadow-sm p-8">
               <ArticleSection toolId={toolId} locale={locale} />
             </div>
             
             {/* FAQ Section */}
-            <div className="bg-[#12121a] rounded-2xl border border-white/5 p-8">
+            <div className="bg-white rounded-2xl border border-gray-200 shadow-sm p-8">
               <FAQSection toolId={toolId} locale={locale} />
             </div>
           </div>
 
           <div className="lg:col-span-1">
             <div className="sticky top-8">
-              <div className="bg-[#12121a] rounded-2xl border border-white/5 p-6">
-                <h3 className="font-bold text-white mb-4 text-sm uppercase tracking-wider text-zinc-400">
+              <div className="bg-white rounded-2xl border border-gray-200 shadow-sm p-6">
+                <h3 className="font-bold text-gray-900 mb-4 text-sm uppercase tracking-wider text-gray-500">
                   {locale === 'en' ? 'Related Calculators' : 'Calculadoras Relacionadas'}
                 </h3>
                 <RelatedTools currentToolId={toolId} locale={locale} />

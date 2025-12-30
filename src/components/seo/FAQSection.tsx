@@ -46,17 +46,17 @@ export const FAQSection: React.FC<FAQSectionProps> = ({ toolId, locale }) => {
 
   return (
     <section className="max-w-none">
-      <h2 className="text-2xl font-bold text-white mb-6">Frequently Asked Questions</h2>
+      <h2 className="text-2xl font-bold text-gray-900 mb-6">Frequently Asked Questions</h2>
       <div className="space-y-3">
         {faqs.map((faq, index) => (
-          <div key={index} className="border border-white/10 rounded-lg overflow-hidden bg-white/5">
+          <div key={index} className="border border-gray-200 rounded-lg overflow-hidden bg-white shadow-sm">
             <button
               onClick={() => setOpenIndex(openIndex === index ? null : index)}
-              className="w-full px-6 py-4 text-left hover:bg-white/5 transition-colors flex justify-between items-center"
+              className="w-full px-6 py-4 text-left hover:bg-gray-50 transition-colors flex justify-between items-center"
             >
-              <span className="font-semibold text-white">{faq.question}</span>
+              <span className="font-semibold text-gray-900">{faq.question}</span>
               <svg
-                className={`w-5 h-5 text-zinc-400 transition-transform ${openIndex === index ? 'rotate-180' : ''}`}
+                className={`w-5 h-5 text-gray-500 transition-transform ${openIndex === index ? 'rotate-180' : ''}`}
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -65,8 +65,8 @@ export const FAQSection: React.FC<FAQSectionProps> = ({ toolId, locale }) => {
               </svg>
             </button>
             {openIndex === index && (
-              <div className="px-6 py-4 border-t border-white/10 bg-white/[0.02]">
-                <p className="text-zinc-300 leading-relaxed">{faq.answer}</p>
+              <div className="px-6 py-4 border-t border-gray-200 bg-gray-50">
+                <p className="text-gray-600 leading-relaxed">{faq.answer}</p>
               </div>
             )}
           </div>

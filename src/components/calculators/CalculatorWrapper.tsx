@@ -144,14 +144,14 @@ export const CalculatorWrapper: React.FC<CalculatorWrapperProps> = ({ toolId }) 
       const inverseResult = result as InverseResult;
       if (!inverseResult.exists) {
         return (
-          <div className="mt-6 p-4 bg-rose-500/10 border border-rose-500/20 rounded-lg text-rose-400">
+          <div className="mt-6 p-4 bg-rose-50 border border-rose-200 rounded-lg text-rose-700">
             {t('Inverse.noInverse')}
           </div>
         );
       }
       return (
         <div className="mt-6">
-          <h3 className="text-xl font-semibold text-white mb-4">{t('result')}</h3>
+          <h3 className="text-xl font-semibold text-gray-900 mb-4">{t('result')}</h3>
           <MatrixInput
             rows={matrixSize}
             columns={matrixSize}
@@ -167,7 +167,7 @@ export const CalculatorWrapper: React.FC<CalculatorWrapperProps> = ({ toolId }) 
       const rrefResult = result as RREFResult;
       return (
         <div className="mt-6">
-          <h3 className="text-xl font-semibold text-white mb-4">{t('result')}</h3>
+          <h3 className="text-xl font-semibold text-gray-900 mb-4">{t('result')}</h3>
           <MatrixInput
             rows={rrefResult.rref.length}
             columns={rrefResult.rref[0].length}
@@ -183,7 +183,7 @@ export const CalculatorWrapper: React.FC<CalculatorWrapperProps> = ({ toolId }) 
       const multResult = result as MultiplicationResult;
       return (
         <div className="mt-6">
-          <h3 className="text-xl font-semibold text-white mb-4">{t('result')}</h3>
+          <h3 className="text-xl font-semibold text-gray-900 mb-4">{t('result')}</h3>
           <MatrixInput
             rows={multResult.result.length}
             columns={multResult.result[0].length}
@@ -201,7 +201,7 @@ export const CalculatorWrapper: React.FC<CalculatorWrapperProps> = ({ toolId }) 
   return (
     <div className="space-y-6">
       <div className="flex flex-wrap gap-4 items-center justify-center mb-6">
-        <label className="text-zinc-300 font-medium">{t('matrixSize')}:</label>
+        <label className="text-gray-700 font-medium">{t('matrixSize')}:</label>
         <div className="flex gap-2">
           {(() => {
             // Limit matrix sizes based on tool type
@@ -217,8 +217,8 @@ export const CalculatorWrapper: React.FC<CalculatorWrapperProps> = ({ toolId }) 
               onClick={() => handleSizeChange(size)}
               className={`px-4 py-2 rounded-lg font-medium transition-all ${
                 matrixSize === size
-                  ? 'bg-white text-black'
-                  : 'bg-white/5 text-zinc-300 hover:bg-white/10 border border-white/10'
+                  ? 'bg-purple-600 text-white'
+                  : 'bg-white text-gray-700 hover:bg-gray-50 border border-gray-300'
               }`}
             >
               {size}×{size}
@@ -226,7 +226,7 @@ export const CalculatorWrapper: React.FC<CalculatorWrapperProps> = ({ toolId }) 
           ))}
         </div>
         {toolId === 'inverse' && matrixSize === 5 && (
-          <p className="text-sm text-amber-400 mt-2 w-full text-center">
+          <p className="text-sm text-amber-600 mt-2 w-full text-center">
             Note: Step-by-step solutions for 5×5 matrices may take longer to compute.
           </p>
         )}
@@ -234,7 +234,7 @@ export const CalculatorWrapper: React.FC<CalculatorWrapperProps> = ({ toolId }) 
 
       <div className="flex flex-wrap justify-center gap-8">
         <div className="text-center">
-          <h3 className="text-lg font-semibold text-zinc-300 mb-4">Matrix A</h3>
+          <h3 className="text-lg font-semibold text-gray-700 mb-4">Matrix A</h3>
           <MatrixInput
             rows={matrixSize}
             columns={matrixSize}
@@ -245,7 +245,7 @@ export const CalculatorWrapper: React.FC<CalculatorWrapperProps> = ({ toolId }) 
 
         {toolId === 'multiplication' && (
           <div className="text-center">
-            <h3 className="text-lg font-semibold text-zinc-300 mb-4">Matrix B</h3>
+            <h3 className="text-lg font-semibold text-gray-700 mb-4">Matrix B</h3>
             <MatrixInput
               rows={matrixSize}
               columns={matrixSize}
@@ -259,13 +259,13 @@ export const CalculatorWrapper: React.FC<CalculatorWrapperProps> = ({ toolId }) 
       <div className="flex justify-center gap-4 mt-6">
         <button
           onClick={handleCalculate}
-          className="bg-white text-black hover:bg-zinc-200 font-semibold py-3 px-8 rounded-lg transition-all"
+          className="bg-gradient-to-r from-purple-600 to-purple-700 text-white hover:from-purple-700 hover:to-purple-800 font-semibold py-3 px-8 rounded-lg transition-all shadow-md hover:shadow-lg"
         >
           {t('calculate')}
         </button>
         <button
           onClick={handleClear}
-          className="bg-white/5 hover:bg-white/10 text-zinc-300 border border-white/10 font-semibold py-3 px-8 rounded-lg transition-all"
+          className="bg-white hover:bg-gray-50 text-gray-700 border-2 border-gray-300 hover:border-gray-400 font-semibold py-3 px-8 rounded-lg transition-all"
         >
           {t('clear')}
         </button>

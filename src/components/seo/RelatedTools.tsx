@@ -34,12 +34,12 @@ export function RelatedTools({ currentToolId, locale }: RelatedToolsProps) {
                 <Link
                     key={tool.id}
                     href={`/${locale}/${tool.slug}`}
-                    className="block p-4 bg-white/5 rounded-lg border border-white/10 hover:border-white/20 hover:bg-white/10 transition-all group"
+                    className="block p-4 bg-white rounded-lg border border-gray-200 hover:border-purple-300 hover:shadow-md transition-all group"
                 >
-                    <h3 className="font-semibold text-white mb-2 group-hover:text-emerald-400 transition-colors text-sm">
+                    <h3 className="font-semibold text-gray-900 mb-2 group-hover:text-purple-600 transition-colors text-sm">
                         {tool.name}
                     </h3>
-                    <p className="text-xs text-zinc-500 line-clamp-2">
+                    <p className="text-xs text-gray-600 line-clamp-2">
                         {tool.description}
                     </p>
                 </Link>

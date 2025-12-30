@@ -44,7 +44,7 @@ export default async function LocaleLayout({
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" />
         <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js"></script>
       </head>
-      <body className="bg-[#0a0a0f] min-h-screen text-white">
+      <body className="bg-white min-h-screen text-gray-900">
         {/* Google Analytics */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-4H0FWL25R3"

@@ -9,13 +9,13 @@
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
   }
   
-  /* KaTeX dark mode support */
+  /* KaTeX light mode support */
   .katex {
-    color: white;
+    color: #1f2937;
   }
   
   .katex .mathnormal {
-    color: white;
+    color: #1f2937;
   }
 }
 
@@ -82,20 +82,20 @@
   }
 }
 
-/* Custom scrollbar - Dark theme */
+/* Custom scrollbar - Light theme */
 ::-webkit-scrollbar {
   width: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #0a0a0f;
+  background: #f9fafb;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #27272a;
+  background: #d1d5db;
   border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #3f3f46;
+  background: #9ca3af;
 }

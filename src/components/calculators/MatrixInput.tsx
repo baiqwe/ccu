@@ -76,9 +76,9 @@ export const MatrixInput: React.FC<MatrixInputProps> = ({
   };
 
   return (
-    <div className="inline-block bg-white/5 p-6 rounded-lg border border-white/10">
+    <div className="inline-block bg-gray-50 p-6 rounded-lg border border-gray-200">
       <div className="flex items-center">
-        <div className="text-4xl font-light text-zinc-500 mr-4">[</div>
+        <div className="text-4xl font-light text-gray-400 mr-4">[</div>
         <div className="grid gap-2" style={{ gridTemplateColumns: `repeat(${columns}, minmax(0, 1fr))` }}>
           {values.map((row, rowIndex) =>
             row.map((value, colIndex) => (
@@ -97,13 +97,13 @@ export const MatrixInput: React.FC<MatrixInputProps> = ({
                 onKeyDown={(e) => handleKeyDown(e, rowIndex, colIndex)}
                 onFocus={() => setFocusedCell({ row: rowIndex, col: colIndex })}
                 onBlur={() => setFocusedCell(null)}
-                className="w-16 h-12 text-center bg-white/5 border-2 border-white/10 rounded focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:bg-white/10 text-white transition-all placeholder:text-zinc-600"
+                className="w-16 h-12 text-center bg-white border-2 border-gray-300 rounded focus:border-purple-500 focus:outline-none focus:ring-2 focus:ring-purple-500/20 focus:bg-purple-50 text-gray-900 transition-all placeholder:text-gray-400"
                 placeholder="0"
               />
             ))
           )}
         </div>
-        <div className="text-4xl font-light text-zinc-500 ml-4">]</div>
+        <div className="text-4xl font-light text-gray-400 ml-4">]</div>
       </div>
     </div>
   );
