@@ -85,8 +85,18 @@ export function ArticleSection({ toolId, locale }: ArticleSectionProps) {
     const definitionTitle = t(`${toolId}.definitionTitle`);
     const calculationTitle = t(`${toolId}.calculationTitle`);
     const applicationsTitle = t(`${toolId}.applicationsTitle`);
-    const formula = t(`${toolId}.formula`, { defaultValue: '' });
-    const formulaTitle = t(`${toolId}.formulaTitle`, { defaultValue: '' });
+    let formula = '';
+    let formulaTitle = '';
+    try {
+      formula = t(`${toolId}.formula`) || '';
+    } catch {
+      // Formula not available for this tool
+    }
+    try {
+      formulaTitle = t(`${toolId}.formulaTitle`) || '';
+    } catch {
+      // Formula title not available for this tool
+    }
 
     return (
       <article className="max-w-none">
