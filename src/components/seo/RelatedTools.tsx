@@ -29,26 +29,21 @@ export function RelatedTools({ currentToolId, locale }: RelatedToolsProps) {
     if (relatedTools.length === 0) return null;
 
     return (
-        <section className="mt-12 p-6 bg-white/80 backdrop-blur-sm rounded-2xl border border-white/20 shadow-lg">
-            <h2 className="text-2xl font-bold text-gray-800 mb-4">
-                {tCommon('relatedTools')}
-            </h2>
-            <div className="grid md:grid-cols-2 gap-4">
-                {relatedTools.map((tool) => (
-                    <Link
-                        key={tool.id}
-                        href={`/${locale}/${tool.slug}`}
-                        className="block p-4 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-lg border border-blue-100 hover:border-blue-300 hover:shadow-md transition-all group"
-                    >
-                        <h3 className="font-semibold text-gray-800 mb-2 group-hover:text-blue-600 transition-colors">
-                            {tool.name}
-                        </h3>
-                        <p className="text-sm text-gray-600 line-clamp-2">
-                            {tool.description}
-                        </p>
-                    </Link>
-                ))}
-            </div>
-        </section>
+        <div className="space-y-4">
+            {relatedTools.map((tool) => (
+                <Link
+                    key={tool.id}
+                    href={`/${locale}/${tool.slug}`}
+                    className="block p-4 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-lg border border-blue-100 hover:border-blue-300 hover:shadow-md transition-all group"
+                >
+                    <h3 className="font-semibold text-slate-800 mb-2 group-hover:text-blue-600 transition-colors">
+                        {tool.name}
+                    </h3>
+                    <p className="text-sm text-slate-600 line-clamp-2">
+                        {tool.description}
+                    </p>
+                </Link>
+            ))}
+        </div>
     );
 }

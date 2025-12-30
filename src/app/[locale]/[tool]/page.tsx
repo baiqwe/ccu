@@ -58,7 +58,7 @@ export default async function ToolPage({ params: { locale, tool } }: { params: {
   });
 
   return (
-    <main className="container mx-auto px-4 py-8">
+    <main className="min-h-screen bg-slate-50 pb-20">
       {jsonLd && (
         <script
           type="application/ld+json"
@@ -71,25 +71,60 @@ export default async function ToolPage({ params: { locale, tool } }: { params: {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
 
-      <BreadcrumbNav
-        locale={locale}
-        items={[
-          { label: locale === 'en' ? 'Home' : 'Inicio', href: `/${locale}` },
-          { label: t('h1'), href: `/${locale}/${tool}` }
-        ]}
-      />
+      {/* Header Section */}
+      <div className="bg-white border-b border-slate-200">
+        <div className="container mx-auto px-4 py-8">
+          <BreadcrumbNav
+            locale={locale}
+            items={[
+              { label: locale === 'en' ? 'Home' : 'Inicio', href: `/${locale}` },
+              { label: t('h1'), href: `/${locale}/${tool}` }
+            ]}
+          />
+          
+          {/* Header Section */}
+          <div className="max-w-3xl mx-auto text-center mt-8 mb-10">
+            <h1 className="text-4xl md:text-5xl font-extrabold text-slate-900 mb-4 tracking-tight">
+              {t('h1')}
+            </h1>
+            <p className="text-lg text-slate-600">
+              {t('description')}
+            </p>
+          </div>
+        </div>
+      </div>
 
-      <h1 className="text-3xl md:text-5xl font-bold mb-6 text-center text-gray-800">
-        {t('h1')}
-      </h1>
+      <div className="container mx-auto px-4 -mt-8">
+        {/* Calculator Card - Floating effect */}
+        <div className="max-w-4xl mx-auto bg-white rounded-2xl shadow-xl border border-slate-200 p-6 md:p-10 mb-16 relative z-10">
+          <CalculatorWrapper toolId={toolId} />
+        </div>
 
-      <CalculatorWrapper toolId={toolId} />
+        {/* Content Section */}
+        <div className="grid lg:grid-cols-3 gap-12 max-w-6xl mx-auto">
+          <div className="lg:col-span-2">
+            {/* Article with better typography */}
+            <div className="prose prose-slate prose-lg max-w-none bg-white p-8 rounded-2xl border border-slate-200 shadow-sm mb-12">
+              <ArticleSection toolId={toolId} locale={locale} />
+            </div>
+            
+            <div className="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm">
+              <FAQSection toolId={toolId} locale={locale} />
+            </div>
+          </div>
 
-      <ArticleSection toolId={toolId} locale={locale} />
-
-      <FAQSection toolId={toolId} locale={locale} />
-
-      <RelatedTools currentToolId={toolId} locale={locale} />
+          <div className="lg:col-span-1">
+            <div className="sticky top-8">
+              <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+                <h3 className="font-bold text-slate-900 mb-4">
+                  {locale === 'en' ? 'Related Calculators' : 'Calculadoras Relacionadas'}
+                </h3>
+                <RelatedTools currentToolId={toolId} locale={locale} />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </main>
   );
 }
