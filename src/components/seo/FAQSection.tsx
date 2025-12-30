@@ -1,21 +1,48 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
+import { usePathname } from 'next/navigation';
+import { generateFAQSchema, FAQItem } from '@/lib/faq-schema';
 
 interface FAQSectionProps {
   toolId: string;
+  locale: string;
 }
 
-export const FAQSection: React.FC<FAQSectionProps> = ({ toolId }) => {
+export const FAQSection: React.FC<FAQSectionProps> = ({ toolId, locale }) => {
   const t = useTranslations('FAQ');
+  const pathname = usePathname();
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
-  const faqs = [
-    { q: `${toolId}.q1`, a: `${toolId}.a1` },
-    { q: `${toolId}.q2`, a: `${toolId}.a2` },
-    { q: `${toolId}.q3`, a: `${toolId}.a3` }
+  const faqs: FAQItem[] = [
+    { question: t(`${toolId}.q1`), answer: t(`${toolId}.a1`) },
+    { question: t(`${toolId}.q2`), answer: t(`${toolId}.a2`) },
+    { question: t(`${toolId}.q3`), answer: t(`${toolId}.a3`) }
   ];
+
+  // Generate FAQ Schema
+  useEffect(() => {
+    const schema = generateFAQSchema({
+      faqs,
+      locale,
+      pageUrl: pathname
+    });
+
+    if (schema) {
+      const scriptId = 'faq-schema';
+      let script = document.getElementById(scriptId);
+      
+      if (!script) {
+        script = document.createElement('script');
+        script.id = scriptId;
+        script.type = 'application/ld+json';
+        document.head.appendChild(script);
+      }
+      
+      script.textContent = JSON.stringify(schema);
+    }
+  }, [faqs, locale, pathname]);
 
   return (
     <section className="mt-16 max-w-4xl mx-auto">
@@ -27,7 +54,7 @@ export const FAQSection: React.FC<FAQSectionProps> = ({ toolId }) => {
               onClick={() => setOpenIndex(openIndex === index ? null : index)}
               className="w-full px-6 py-4 text-left bg-white hover:bg-gray-50 transition-colors flex justify-between items-center"
             >
-              <span className="font-semibold text-gray-700">{t(faq.q as any)}</span>
+              <span className="font-semibold text-gray-700">{faq.question}</span>
               <svg
                 className={`w-5 h-5 text-gray-500 transition-transform ${openIndex === index ? 'rotate-180' : ''}`}
                 fill="none"
@@ -39,7 +66,7 @@ export const FAQSection: React.FC<FAQSectionProps> = ({ toolId }) => {
             </button>
             {openIndex === index && (
               <div className="px-6 py-4 bg-gray-50 border-t border-gray-200">
-                <p className="text-gray-600">{t(faq.a as any)}</p>
+                <p className="text-gray-600">{faq.answer}</p>
               </div>
             )}
           </div>

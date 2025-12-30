@@ -87,7 +87,7 @@ export default async function ToolPage({ params: { locale, tool } }: { params: {
 
       <ArticleSection toolId={toolId} locale={locale} />
 
-      <FAQSection toolId={toolId} />
+      <FAQSection toolId={toolId} locale={locale} />
 
       <RelatedTools currentToolId={toolId} locale={locale} />
     </main>

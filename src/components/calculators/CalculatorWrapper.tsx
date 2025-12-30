@@ -44,7 +44,13 @@ export const CalculatorWrapper: React.FC<CalculatorWrapperProps> = ({ toolId }) 
 
   const handleCalculate = () => {
     switch (toolId) {
-      case 'inverse-matrix':
+      case 'inverse':
+        // Performance limit: Adjoint method with recursive determinant calculation
+        // becomes too slow for matrices larger than 5x5 (O(n!) complexity)
+        if (matrixSize > 5) {
+          alert('For step-by-step solutions, inverse matrix calculator supports up to 5×5 matrices. For larger matrices, please use Gauss-Jordan elimination method.');
+          return;
+        }
         const inverseResult: InverseResult = calculateInverse(matrixA);
         setResult(inverseResult);
         break;
@@ -134,7 +140,7 @@ export const CalculatorWrapper: React.FC<CalculatorWrapperProps> = ({ toolId }) 
   const renderResult = () => {
     if (!result) return null;
 
-    if (toolId === 'inverse-matrix') {
+    if (toolId === 'inverse') {
       const inverseResult = result as InverseResult;
       if (!inverseResult.exists) {
         return (
@@ -197,7 +203,15 @@ export const CalculatorWrapper: React.FC<CalculatorWrapperProps> = ({ toolId }) 
       <div className="flex flex-wrap gap-4 items-center justify-center mb-6">
         <label className="text-gray-700 font-medium">{t('matrixSize')}:</label>
         <div className="flex gap-2">
-          {[2, 3, 4].map(size => (
+          {(() => {
+            // Limit matrix sizes based on tool type
+            // Inverse matrix: max 5x5 for step-by-step (performance)
+            // Other tools: can support larger sizes
+            const maxSize = toolId === 'inverse' ? 5 : 4;
+            const sizes = [2, 3, 4];
+            if (maxSize === 5) sizes.push(5);
+            return sizes;
+          })().map(size => (
             <button
               key={size}
               onClick={() => handleSizeChange(size)}
@@ -211,6 +225,11 @@ export const CalculatorWrapper: React.FC<CalculatorWrapperProps> = ({ toolId }) 
             </button>
           ))}
         </div>
+        {toolId === 'inverse' && matrixSize === 5 && (
+          <p className="text-sm text-amber-600 mt-2 w-full text-center">
+            Note: Step-by-step solutions for 5×5 matrices may take longer to compute.
+          </p>
+        )}
       </div>
 
       <div className="flex flex-wrap justify-center gap-8">

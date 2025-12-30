@@ -60,6 +60,72 @@ export default function HomePage({ params: { locale } }: { params: { locale: str
         ))}
       </div>
 
+      {/* SEO Content Section */}
+      <div className="max-w-4xl mx-auto mb-16 px-4">
+        <h2 className="text-3xl font-bold text-gray-800 mb-6 text-center">
+          {locale === 'en' ? 'Comprehensive Linear Algebra Tools' : 'Herramientas Completas de Álgebra Lineal'}
+        </h2>
+        <div className="prose prose-lg mx-auto text-gray-600 space-y-4">
+          <p>
+            {locale === 'en' 
+              ? 'Our suite of online matrix calculators is designed to help you verify your manual calculations and understand the underlying concepts. Unlike simple calculators, we focus on the learning process.'
+              : 'Nuestro conjunto de calculadoras de matrices en línea está diseñado para ayudarte a verificar tus cálculos manuales y comprender los conceptos subyacentes. A diferencia de las calculadoras simples, nos enfocamos en el proceso de aprendizaje.'}
+          </p>
+          <div className="grid md:grid-cols-2 gap-8 mt-8">
+            <div>
+              <h3 className="text-xl font-semibold text-gray-800 mb-2">
+                {locale === 'en' ? 'Matrix Operations' : 'Operaciones de Matrices'}
+              </h3>
+              <ul className="list-disc pl-5 space-y-2">
+                <li>
+                  <strong>{locale === 'en' ? 'Inverse Matrix:' : 'Matriz Inversa:'}</strong>{' '}
+                  {locale === 'en' 
+                    ? 'Find the inverse using Adjoint method or Gauss-Jordan elimination.'
+                    : 'Encuentra la inversa usando el método Adjunto o eliminación de Gauss-Jordan.'}
+                </li>
+                <li>
+                  <strong>{locale === 'en' ? 'Multiplication:' : 'Multiplicación:'}</strong>{' '}
+                  {locale === 'en' 
+                    ? 'Compute dot products for matrices of any compatible size.'
+                    : 'Calcula productos punto para matrices de cualquier tamaño compatible.'}
+                </li>
+                <li>
+                  <strong>{locale === 'en' ? 'Determinant:' : 'Determinante:'}</strong>{' '}
+                  {locale === 'en' 
+                    ? 'Calculate determinants using cofactor expansion.'
+                    : 'Calcula determinantes usando expansión de cofactores.'}
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h3 className="text-xl font-semibold text-gray-800 mb-2">
+                {locale === 'en' ? 'Advanced Algorithms' : 'Algoritmos Avanzados'}
+              </h3>
+              <ul className="list-disc pl-5 space-y-2">
+                <li>
+                  <strong>{locale === 'en' ? 'RREF (Gaussian Elimination):' : 'RREF (Eliminación Gaussiana):'}</strong>{' '}
+                  {locale === 'en' 
+                    ? 'Transform matrices to Reduced Row Echelon Form step-by-step.'
+                    : 'Transforma matrices a Forma Escalonada Reducida paso a paso.'}
+                </li>
+                <li>
+                  <strong>{locale === 'en' ? 'Rank & Nullity:' : 'Rango y Nulidad:'}</strong>{' '}
+                  {locale === 'en' 
+                    ? 'Determine the dimension of column and row spaces.'
+                    : 'Determina la dimensión de los espacios de columnas y filas.'}
+                </li>
+                <li>
+                  <strong>{locale === 'en' ? 'Eigenvalues:' : 'Valores Propios:'}</strong>{' '}
+                  {locale === 'en' 
+                    ? 'Find characteristic polynomials and roots.'
+                    : 'Encuentra polinomios característicos y raíces.'}
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div className="mt-16 max-w-4xl mx-auto">
         <h2 className="text-2xl font-bold text-gray-800 mb-6">Why Choose Our Calculators?</h2>
         <div className="grid md:grid-cols-3 gap-6">
