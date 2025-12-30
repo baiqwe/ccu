@@ -56,7 +56,7 @@ export default async function LocaleLayout({
           }}
         />
       </head>
-      <body className="bg-gradient-to-br from-slate-50 to-blue-50 min-h-screen">
+      <body className="bg-slate-50 min-h-screen">
         <NextIntlClientProvider messages={messages}>
           {children}
           <Footer locale={locale} />
