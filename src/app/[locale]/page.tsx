@@ -3,233 +3,399 @@ import { unstable_setRequestLocale } from 'next-intl/server';
 import Link from 'next/link';
 import { generateBreadcrumbSchema } from '@/lib/seo-schema';
 
-// Simple SVG icon components
-const Icons = {
-  Calculator: () => (
-    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" /></svg>
-  ),
-  Lightning: () => (
-    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
-  ),
-  Book: () => (
-    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" /></svg>
-  ),
-  Check: () => (
-    <svg className="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
-  ),
-  ArrowRight: () => (
-    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
-  )
-};
-
 export default function HomePage({ params: { locale } }: { params: { locale: string } }) {
   unstable_setRequestLocale(locale);
   const t = useTranslations('Metadata');
   const breadcrumbSchema = generateBreadcrumbSchema({ locale });
 
   const tools = [
-    { id: 'inverse', name: t('inverse.h1'), slug: locale === 'en' ? 'inverse-matrix-calculator' : 'calculadora-matriz-inversa', icon: 'Calculator' },
-    { id: 'rref', name: t('rref.h1'), slug: locale === 'en' ? 'rref-calculator' : 'calculadora-gauss-jordan', icon: 'Lightning' },
-    { id: 'multiplication', name: t('multiplication.h1'), slug: locale === 'en' ? 'matrix-multiplication-calculator' : 'calculadora-multiplicacion-matrices', icon: 'Calculator' },
-    { id: 'determinant', name: t('determinant.h1'), slug: locale === 'en' ? 'determinant-calculator' : 'calculadora-determinante', icon: 'Calculator' },
-    { id: 'eigenvalue', name: t('eigenvalue.h1'), slug: locale === 'en' ? 'eigenvalue-calculator' : 'calculadora-valores-propios', icon: 'Lightning' },
-    { id: 'rank', name: t('rank.h1'), slug: locale === 'en' ? 'rank-matrix-calculator' : 'calculadora-rango-matriz', icon: 'Calculator' }
+    { id: 'inverse', name: t('inverse.h1'), slug: locale === 'en' ? 'inverse-matrix-calculator' : 'calculadora-matriz-inversa', desc: 'Adjoint & Gauss-Jordan methods', color: 'from-violet-500 to-purple-600' },
+    { id: 'rref', name: t('rref.h1'), slug: locale === 'en' ? 'rref-calculator' : 'calculadora-gauss-jordan', desc: 'Row echelon form transformation', color: 'from-emerald-500 to-teal-600' },
+    { id: 'multiplication', name: t('multiplication.h1'), slug: locale === 'en' ? 'matrix-multiplication-calculator' : 'calculadora-multiplicacion-matrices', desc: 'Dot product computation', color: 'from-amber-500 to-orange-600' },
+    { id: 'determinant', name: t('determinant.h1'), slug: locale === 'en' ? 'determinant-calculator' : 'calculadora-determinante', desc: 'Cofactor expansion method', color: 'from-rose-500 to-pink-600' },
+    { id: 'eigenvalue', name: t('eigenvalue.h1'), slug: locale === 'en' ? 'eigenvalue-calculator' : 'calculadora-valores-propios', desc: 'Characteristic polynomial roots', color: 'from-cyan-500 to-blue-600' },
+    { id: 'rank', name: t('rank.h1'), slug: locale === 'en' ? 'rank-matrix-calculator' : 'calculadora-rango-matriz', desc: 'Linear independence analysis', color: 'from-fuchsia-500 to-purple-600' }
   ];
 
   return (
-    <main className="min-h-screen bg-slate-50 relative overflow-hidden">
+    <main className="min-h-screen bg-[#0a0a0f] text-white">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
 
-      {/* Decorative Background Grid */}
-      <div className="absolute inset-0 opacity-30">
-        <div className="absolute inset-0" style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-          backgroundSize: '60px 60px'
-        }}></div>
-      </div>
-      
-      <div className="container mx-auto px-4 py-16 relative z-10">
+      {/* Noise texture overlay */}
+      <div className="fixed inset-0 pointer-events-none opacity-[0.015]" style={{
+        backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E")`
+      }}></div>
+
+      {/* Hero Section */}
+      <section className="relative pt-20 pb-32 px-4">
+        {/* Gradient orbs */}
+        <div className="absolute top-20 left-1/4 w-96 h-96 bg-violet-600/20 rounded-full blur-[128px]"></div>
+        <div className="absolute top-40 right-1/4 w-80 h-80 bg-emerald-600/15 rounded-full blur-[100px]"></div>
         
-        {/* Hero Section */}
-        <div className="text-center max-w-4xl mx-auto mb-24">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 border border-blue-100 text-blue-700 text-sm font-medium mb-8">
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
-            </span>
-            {locale === 'en' ? 'New: RREF Steps Available' : 'Nuevo: Pasos RREF Disponibles'}
+        <div className="max-w-6xl mx-auto relative">
+          {/* Badge */}
+          <div className="flex justify-center mb-8">
+            <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm">
+              <span className="text-xs font-mono text-emerald-400">v2.0</span>
+              <span className="w-px h-4 bg-white/20"></span>
+              <span className="text-sm text-zinc-400">Fraction-based precision arithmetic</span>
+            </div>
           </div>
-          
-          <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight text-slate-900 mb-8 leading-tight">
-            {locale === 'en' ? (
-              <>
-                Master Linear Algebra with <br/>
-                <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent">
-                  Step-by-Step Solutions
-                </span>
-              </>
-            ) : (
-              <>
-                Domina el Álgebra Lineal con <br/>
-                <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent">
-                  Soluciones Paso a Paso
-                </span>
-              </>
-            )}
-          </h1>
-          
-          <p className="text-xl text-slate-600 max-w-2xl mx-auto mb-10 leading-relaxed">
-            {locale === 'en' 
-              ? 'Stop struggling with matrix calculations. Get instant, detailed explanations for inverses, determinants, and more.'
-              : 'Deja de luchar con los cálculos de matrices. Obtén explicaciones instantáneas y detalladas para inversas, determinantes y más.'}
-            <span className="block mt-2 text-slate-500">
-              {locale === 'en' ? 'Free forever. No signup required.' : 'Gratis para siempre. No se requiere registro.'}
+
+          {/* Main headline */}
+          <h1 className="text-center mb-8">
+            <span className="block text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight text-white mb-4">
+              Matrix Calculator
             </span>
+            <span className="block text-2xl md:text-3xl lg:text-4xl font-light text-zinc-500">
+              with step-by-step mathematical proofs
+            </span>
+          </h1>
+
+          {/* Description */}
+          <p className="text-center text-lg md:text-xl text-zinc-400 max-w-2xl mx-auto mb-12 leading-relaxed">
+            Built for students learning linear algebra. Every calculation shows the complete 
+            derivation process—exactly like your textbook, but computed in milliseconds.
           </p>
 
+          {/* Stats bar */}
+          <div className="flex flex-wrap justify-center gap-8 md:gap-16 mb-16">
+            <div className="text-center">
+              <div className="text-3xl md:text-4xl font-bold text-white font-mono">6</div>
+              <div className="text-sm text-zinc-500 mt-1">Core Operations</div>
+            </div>
+            <div className="text-center">
+              <div className="text-3xl md:text-4xl font-bold text-white font-mono">∞</div>
+              <div className="text-sm text-zinc-500 mt-1">Precision (Fractions)</div>
+            </div>
+            <div className="text-center">
+              <div className="text-3xl md:text-4xl font-bold text-white font-mono">&lt;50ms</div>
+              <div className="text-sm text-zinc-500 mt-1">Computation Time</div>
+            </div>
+            <div className="text-center">
+              <div className="text-3xl md:text-4xl font-bold text-white font-mono">0</div>
+              <div className="text-sm text-zinc-500 mt-1">Data Collected</div>
+            </div>
+          </div>
+
+          {/* CTA buttons */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a href="#tools" className="btn-primary flex items-center gap-2">
-              {locale === 'en' ? 'Start Calculating' : 'Comenzar a Calcular'}
-              <Icons.ArrowRight />
+            <a href="#tools" className="px-8 py-4 bg-white text-black font-semibold rounded-lg hover:bg-zinc-200 transition-colors">
+              Start Calculating
             </a>
-            <a href="#features" className="btn-secondary">
-              {locale === 'en' ? 'Learn How It Works' : 'Aprende Cómo Funciona'}
+            <a href="#methodology" className="px-8 py-4 text-white border border-white/20 rounded-lg hover:bg-white/5 transition-colors">
+              View Methodology
             </a>
           </div>
         </div>
+      </section>
 
-        {/* Tools Grid */}
-        <div id="tools" className="mb-32">
-          <div className="flex items-center justify-between mb-8">
-            <h2 className="text-2xl font-bold text-slate-900">
-              {locale === 'en' ? 'Popular Tools' : 'Herramientas Populares'}
-            </h2>
-            <span className="text-sm text-slate-500 hidden sm:block">
-              {locale === 'en' ? 'Select a calculator to begin' : 'Selecciona una calculadora para comenzar'}
-            </span>
+      {/* Tools Grid */}
+      <section id="tools" className="py-24 px-4 border-t border-white/5">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Available Calculators</h2>
+            <p className="text-zinc-500 max-w-xl mx-auto">
+              Each tool implements textbook algorithms with complete step visualization. 
+              Select one to see the mathematical derivation process.
+            </p>
           </div>
-          
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
             {tools.map((tool) => (
               <Link
                 key={tool.id}
                 href={`/${locale}/${tool.slug}`}
-                className="group relative bg-white rounded-2xl p-6 border border-slate-200 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 overflow-hidden"
+                className="group relative bg-white/[0.02] border border-white/5 rounded-xl p-6 hover:bg-white/[0.05] hover:border-white/10 transition-all duration-300"
               >
-                <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
-                  <div className="w-24 h-24 bg-blue-500 rounded-full blur-2xl"></div>
-                </div>
+                {/* Gradient indicator */}
+                <div className={`absolute top-6 right-6 w-2 h-2 rounded-full bg-gradient-to-r ${tool.color}`}></div>
                 
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center text-blue-600 group-hover:scale-110 transition-transform duration-300">
-                    {tool.icon === 'Lightning' ? <Icons.Lightning /> : <Icons.Calculator />}
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-bold text-slate-900 mb-1 group-hover:text-blue-600 transition-colors">
-                      {tool.name}
-                    </h3>
-                    <p className="text-sm text-slate-500">
-                      {locale === 'en' ? 'View step-by-step solution' : 'Ver solución paso a paso'}
-                    </p>
-                  </div>
+                <div className="mb-4">
+                  <h3 className="text-lg font-semibold text-white group-hover:text-zinc-100 transition-colors">
+                    {tool.name}
+                  </h3>
+                  <p className="text-sm text-zinc-500 mt-1 font-mono">{tool.desc}</p>
                 </div>
-                
-                <div className="mt-4 flex items-center text-sm font-medium text-blue-600 opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-300">
-                  {locale === 'en' ? 'Try Calculator' : 'Probar Calculadora'} <Icons.ArrowRight />
+
+                <div className="flex items-center text-sm text-zinc-600 group-hover:text-zinc-400 transition-colors">
+                  <span>Open calculator</span>
+                  <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
                 </div>
               </Link>
             ))}
           </div>
         </div>
+      </section>
 
-        {/* Features Section (Why Choose Us) */}
-        <div id="features" className="grid md:grid-cols-3 gap-8 mb-32">
-          {[
-            { 
-              title: locale === 'en' ? 'Step-by-Step Logic' : 'Lógica Paso a Paso', 
-              desc: locale === 'en' 
-                ? "Don't just get the answer. See exactly how row operations and cofactor expansions work."
-                : 'No solo obtengas la respuesta. Ve exactamente cómo funcionan las operaciones de fila y las expansiones de cofactores.',
-              icon: <Icons.Book />
-            },
-            { 
-              title: locale === 'en' ? '100% Client-Side' : '100% Del Lado del Cliente', 
-              desc: locale === 'en' 
-                ? 'Your data never leaves your browser. Calculations are instant and completely private.'
-                : 'Tus datos nunca salen de tu navegador. Los cálculos son instantáneos y completamente privados.',
-              icon: <Icons.Lightning />
-            },
-            { 
-              title: locale === 'en' ? 'Export to LaTeX' : 'Exportar a LaTeX', 
-              desc: locale === 'en' 
-                ? 'Copy the solution steps directly into your homework or research papers.'
-                : 'Copia los pasos de la solución directamente en tus tareas o trabajos de investigación.',
-              icon: <Icons.Calculator />
-            }
-          ].map((feature, idx) => (
-            <div key={idx} className="bg-slate-50 rounded-2xl p-8 text-center border border-slate-100">
-              <div className="w-14 h-14 bg-white rounded-full shadow-sm flex items-center justify-center text-blue-600 mx-auto mb-6">
-                {feature.icon}
+      {/* Methodology Section (E-E-A-T) */}
+      <section id="methodology" className="py-24 px-4 bg-white/[0.02] border-y border-white/5">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Our Methodology</h2>
+            <p className="text-zinc-500 max-w-2xl mx-auto">
+              We don't just give you answers—we show you how mathematicians actually derive them. 
+              Every step follows established linear algebra textbook conventions.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8">
+            {/* Algorithm Card */}
+            <div className="bg-[#12121a] rounded-2xl p-8 border border-white/5">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-10 h-10 rounded-lg bg-violet-500/10 flex items-center justify-center">
+                  <span className="text-violet-400 font-mono text-sm">01</span>
+                </div>
+                <h3 className="text-xl font-semibold text-white">Fraction-Based Arithmetic</h3>
               </div>
-              <h3 className="text-lg font-bold text-slate-900 mb-3">{feature.title}</h3>
-              <p className="text-slate-600 leading-relaxed">{feature.desc}</p>
+              <p className="text-zinc-400 leading-relaxed mb-6">
+                Unlike floating-point calculators that introduce rounding errors, we represent 
+                all numbers as exact fractions. When you see <code className="px-2 py-1 bg-white/5 rounded text-emerald-400 font-mono text-sm">1/3</code>, 
+                it's truly 1/3—not 0.333333.
+              </p>
+              <div className="bg-black/30 rounded-lg p-4 font-mono text-sm">
+                <div className="text-zinc-500">// Internal representation</div>
+                <div className="text-zinc-300">
+                  <span className="text-violet-400">class</span> Fraction {'{'}
+                  <br />
+                  <span className="ml-4 text-zinc-500">numerator: BigInt</span>
+                  <br />
+                  <span className="ml-4 text-zinc-500">denominator: BigInt</span>
+                  <br />
+                  {'}'}
+                </div>
+              </div>
             </div>
-          ))}
-        </div>
 
-        {/* SEO Content Section (Rich Text) */}
-        <div className="max-w-4xl mx-auto bg-white rounded-3xl p-8 md:p-12 shadow-sm border border-slate-100">
-          <h2 className="text-3xl font-bold text-slate-900 mb-8 text-center">
-            {locale === 'en' ? 'Why Use Our Matrix Tools?' : '¿Por qué usar nuestras herramientas?'}
-          </h2>
+            {/* Algorithm Card */}
+            <div className="bg-[#12121a] rounded-2xl p-8 border border-white/5">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-10 h-10 rounded-lg bg-emerald-500/10 flex items-center justify-center">
+                  <span className="text-emerald-400 font-mono text-sm">02</span>
+                </div>
+                <h3 className="text-xl font-semibold text-white">Textbook Algorithms</h3>
+              </div>
+              <p className="text-zinc-400 leading-relaxed mb-6">
+                We implement the same methods taught in university courses. For inverse matrices, 
+                we use the Adjoint Method (cofactor expansion + transpose). For RREF, we use 
+                Gaussian-Jordan elimination with complete row operation logging.
+              </p>
+              <div className="space-y-2">
+                <div className="flex items-center gap-3">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                  <span className="text-zinc-300 text-sm">Cofactor Expansion for determinants</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                  <span className="text-zinc-300 text-sm">Adjugate matrix for inverses</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                  <span className="text-zinc-300 text-sm">Characteristic polynomial for eigenvalues</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Step Visualization Card */}
+            <div className="bg-[#12121a] rounded-2xl p-8 border border-white/5">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-10 h-10 rounded-lg bg-amber-500/10 flex items-center justify-center">
+                  <span className="text-amber-400 font-mono text-sm">03</span>
+                </div>
+                <h3 className="text-xl font-semibold text-white">Step-by-Step Derivation</h3>
+              </div>
+              <p className="text-zinc-400 leading-relaxed mb-6">
+                Each calculation generates a complete derivation trail. For a 3×3 inverse, you'll see: 
+                determinant calculation → cofactor matrix → adjugate (transpose) → final multiplication. 
+                Every step includes the mathematical reasoning.
+              </p>
+              <div className="flex items-center gap-4 text-sm">
+                <div className="px-3 py-1.5 bg-amber-500/10 text-amber-400 rounded-lg font-mono">LaTeX output</div>
+                <div className="px-3 py-1.5 bg-white/5 text-zinc-400 rounded-lg font-mono">Copy to clipboard</div>
+              </div>
+            </div>
+
+            {/* Privacy Card */}
+            <div className="bg-[#12121a] rounded-2xl p-8 border border-white/5">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-10 h-10 rounded-lg bg-rose-500/10 flex items-center justify-center">
+                  <span className="text-rose-400 font-mono text-sm">04</span>
+                </div>
+                <h3 className="text-xl font-semibold text-white">Client-Side Computation</h3>
+              </div>
+              <p className="text-zinc-400 leading-relaxed mb-6">
+                All calculations run in your browser using JavaScript. We don't send your matrices to 
+                any server. Check the Network tab in DevTools—you'll see zero API calls during computation. 
+                Your data stays on your device.
+              </p>
+              <div className="flex items-center gap-2 text-sm text-zinc-500">
+                <svg className="w-4 h-4 text-emerald-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                </svg>
+                <span>No tracking • No cookies • No data collection</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Use Cases Section (E-E-A-T) */}
+      <section className="py-24 px-4">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Built For Real Math Problems</h2>
+            <p className="text-zinc-500 max-w-2xl mx-auto">
+              Whether you're solving homework problems, verifying research calculations, 
+              or teaching linear algebra concepts, these tools adapt to your workflow.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-6">
+            {/* Use Case 1 */}
+            <div className="p-6 rounded-xl border border-white/5 bg-gradient-to-b from-white/[0.02] to-transparent">
+              <div className="text-4xl mb-4">📚</div>
+              <h3 className="text-lg font-semibold text-white mb-2">Homework Verification</h3>
+              <p className="text-zinc-500 text-sm leading-relaxed">
+                Solve problems by hand first, then verify each step matches our derivation. 
+                Identify exactly where you made mistakes in row operations or cofactor signs.
+              </p>
+            </div>
+
+            {/* Use Case 2 */}
+            <div className="p-6 rounded-xl border border-white/5 bg-gradient-to-b from-white/[0.02] to-transparent">
+              <div className="text-4xl mb-4">🔬</div>
+              <h3 className="text-lg font-semibold text-white mb-2">Research Computation</h3>
+              <p className="text-zinc-500 text-sm leading-relaxed">
+                Get exact fractional results for theoretical work. Export LaTeX directly 
+                into your papers. No need to manually typeset matrix operations.
+              </p>
+            </div>
+
+            {/* Use Case 3 */}
+            <div className="p-6 rounded-xl border border-white/5 bg-gradient-to-b from-white/[0.02] to-transparent">
+              <div className="text-4xl mb-4">👨‍🏫</div>
+              <h3 className="text-lg font-semibold text-white mb-2">Teaching Tool</h3>
+              <p className="text-zinc-500 text-sm leading-relaxed">
+                Project step-by-step solutions during lectures. Students see the complete 
+                algorithm execution, not just the final answer.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Technical Specs (E-E-A-T) */}
+      <section className="py-24 px-4 border-t border-white/5">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Technical Specifications</h2>
+            <p className="text-zinc-500">
+              Under the hood: what powers these calculators.
+            </p>
+          </div>
+
+          <div className="space-y-4">
+            <div className="flex items-start gap-4 p-4 rounded-lg bg-white/[0.02] border border-white/5">
+              <div className="text-zinc-500 font-mono text-sm w-32 flex-shrink-0">Matrix Size</div>
+              <div className="text-zinc-300">Up to 5×5 for step-by-step derivation (O(n!) complexity for determinants). Larger matrices computed without full step visualization.</div>
+            </div>
+            <div className="flex items-start gap-4 p-4 rounded-lg bg-white/[0.02] border border-white/5">
+              <div className="text-zinc-500 font-mono text-sm w-32 flex-shrink-0">Number Format</div>
+              <div className="text-zinc-300">Exact fractions with GCD reduction. Supports integers, decimals (converted to fractions), and negative numbers.</div>
+            </div>
+            <div className="flex items-start gap-4 p-4 rounded-lg bg-white/[0.02] border border-white/5">
+              <div className="text-zinc-500 font-mono text-sm w-32 flex-shrink-0">Algorithms</div>
+              <div className="text-zinc-300">Cofactor expansion (determinants), Adjugate method (inverse), Gaussian-Jordan elimination (RREF), Characteristic polynomial (eigenvalues).</div>
+            </div>
+            <div className="flex items-start gap-4 p-4 rounded-lg bg-white/[0.02] border border-white/5">
+              <div className="text-zinc-500 font-mono text-sm w-32 flex-shrink-0">Output Format</div>
+              <div className="text-zinc-300">Interactive step viewer with LaTeX rendering (KaTeX), copy-to-clipboard for all steps, fraction/decimal toggle.</div>
+            </div>
+            <div className="flex items-start gap-4 p-4 rounded-lg bg-white/[0.02] border border-white/5">
+              <div className="text-zinc-500 font-mono text-sm w-32 flex-shrink-0">Runtime</div>
+              <div className="text-zinc-300">100% client-side JavaScript. No server requests during computation. Works offline after initial page load.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* All Tools List (SEO) */}
+      <section className="py-24 px-4 border-t border-white/5">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-2xl font-bold text-white mb-8 text-center">Complete Calculator Index</h2>
           
-          <div className="grid md:grid-cols-2 gap-12">
-            <div className="space-y-4 text-slate-600">
-              <p className="leading-relaxed">
-                {locale === 'en' 
-                  ? 'Linear algebra is the backbone of modern data science, engineering, and physics. Whether you are inverting a 4x4 matrix or finding eigenvalues, manual calculations are prone to errors.'
-                  : 'El álgebra lineal es la columna vertebral de la ciencia de datos moderna, la ingeniería y la física. Ya sea que estés invirtiendo una matriz 4x4 o encontrando valores propios, los cálculos manuales son propensos a errores.'}
-              </p>
-              <p className="leading-relaxed">
-                {locale === 'en' 
-                  ? 'Our suite of online matrix calculators is designed not just to solve problems, but to teach. We break down complex algorithms like Gaussian Elimination and Cofactor Expansion into digestible steps.'
-                  : 'Nuestro conjunto de calculadoras de matrices en línea está diseñado no solo para resolver problemas, sino para enseñar. Desglosamos algoritmos complejos como la Eliminación Gaussiana y la Expansión de Cofactores en pasos digeribles.'}
-              </p>
+          <div className="grid md:grid-cols-2 gap-x-12 gap-y-6 text-sm">
+            <div>
+              <h3 className="text-zinc-400 font-semibold mb-4 uppercase tracking-wider text-xs">Basic Operations</h3>
+              <ul className="space-y-3">
+                <li>
+                  <Link href={`/${locale}/${locale === 'en' ? 'matrix-multiplication-calculator' : 'calculadora-multiplicacion-matrices'}`} className="text-zinc-300 hover:text-white transition-colors">
+                    Matrix Multiplication — compute A × B with dot product steps
+                  </Link>
+                </li>
+                <li>
+                  <Link href={`/${locale}/${locale === 'en' ? 'determinant-calculator' : 'calculadora-determinante'}`} className="text-zinc-300 hover:text-white transition-colors">
+                    Determinant — cofactor expansion for 2×2, 3×3, 4×4, 5×5 matrices
+                  </Link>
+                </li>
+              </ul>
             </div>
             
-            <div className="bg-slate-50 rounded-xl p-6">
-              <h3 className="font-bold text-slate-900 mb-4">
-                {locale === 'en' ? 'Supported Operations' : 'Operaciones Soportadas'}
-              </h3>
+            <div>
+              <h3 className="text-zinc-400 font-semibold mb-4 uppercase tracking-wider text-xs">Advanced Operations</h3>
               <ul className="space-y-3">
-                {(locale === 'en' ? [
-                  'Matrix Multiplication (Dot Product)',
-                  'Inverse Matrix (Adjoint & Gauss-Jordan)',
-                  'Determinant (2x2 to 5x5)',
-                  'Reduced Row Echelon Form (RREF)',
-                  'Matrix Rank & Nullity',
-                  'Eigenvalues & Eigenvectors'
-                ] : [
-                  'Multiplicación de Matrices (Producto Punto)',
-                  'Matriz Inversa (Adjunto y Gauss-Jordan)',
-                  'Determinante (2x2 a 5x5)',
-                  'Forma Escalonada Reducida (RREF)',
-                  'Rango y Nulidad de Matriz',
-                  'Valores Propios y Vectores Propios'
-                ]).map((item, i) => (
-                  <li key={i} className="flex items-center gap-3 text-sm text-slate-700">
-                    <Icons.Check /> {item}
-                  </li>
-                ))}
+                <li>
+                  <Link href={`/${locale}/${locale === 'en' ? 'inverse-matrix-calculator' : 'calculadora-matriz-inversa'}`} className="text-zinc-300 hover:text-white transition-colors">
+                    Inverse Matrix — adjugate method with singularity detection
+                  </Link>
+                </li>
+                <li>
+                  <Link href={`/${locale}/${locale === 'en' ? 'eigenvalue-calculator' : 'calculadora-valores-propios'}`} className="text-zinc-300 hover:text-white transition-colors">
+                    Eigenvalues — characteristic polynomial roots and eigenvectors
+                  </Link>
+                </li>
+              </ul>
+            </div>
+            
+            <div>
+              <h3 className="text-zinc-400 font-semibold mb-4 uppercase tracking-wider text-xs">Row Operations</h3>
+              <ul className="space-y-3">
+                <li>
+                  <Link href={`/${locale}/${locale === 'en' ? 'rref-calculator' : 'calculadora-gauss-jordan'}`} className="text-zinc-300 hover:text-white transition-colors">
+                    RREF — Gaussian-Jordan elimination with row operation log
+                  </Link>
+                </li>
+                <li>
+                  <Link href={`/${locale}/${locale === 'en' ? 'rank-matrix-calculator' : 'calculadora-rango-matriz'}`} className="text-zinc-300 hover:text-white transition-colors">
+                    Matrix Rank — linear independence via pivot counting
+                  </Link>
+                </li>
+              </ul>
+            </div>
+            
+            <div>
+              <h3 className="text-zinc-400 font-semibold mb-4 uppercase tracking-wider text-xs">Resources</h3>
+              <ul className="space-y-3">
+                <li>
+                  <Link href={`/${locale}/about`} className="text-zinc-300 hover:text-white transition-colors">
+                    About — methodology, team, and development story
+                  </Link>
+                </li>
+                <li>
+                  <Link href={`/${locale}/privacy`} className="text-zinc-300 hover:text-white transition-colors">
+                    Privacy — no data collection policy explained
+                  </Link>
+                </li>
               </ul>
             </div>
           </div>
         </div>
-
-      </div>
+      </section>
     </main>
   );
 }

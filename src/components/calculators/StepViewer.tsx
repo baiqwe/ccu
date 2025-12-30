@@ -46,7 +46,7 @@ export const StepViewer: React.FC<StepViewerProps> = ({ steps }) => {
     <div className="mt-8">
       <button
         onClick={() => setShowSteps(!showSteps)}
-        className="w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold py-3 px-6 rounded-lg shadow-md transition-all flex items-center justify-center gap-2"
+        className="w-full bg-white text-black hover:bg-zinc-200 font-semibold py-3 px-6 rounded-lg transition-all flex items-center justify-center gap-2"
       >
         <span>{showSteps ? 'Hide' : 'Show'} Solution Steps</span>
         <svg
@@ -64,18 +64,20 @@ export const StepViewer: React.FC<StepViewerProps> = ({ steps }) => {
           {steps.map((step, idx) => (
             <div
               key={idx}
-              className="border border-slate-200 rounded-lg bg-white overflow-hidden shadow-sm"
+              className="border border-white/10 rounded-lg bg-white/5 overflow-hidden"
             >
-              <div className="bg-slate-50 px-4 py-3 font-semibold text-slate-700 border-b border-slate-200">
+              <div className="bg-white/5 px-4 py-3 font-semibold text-white border-b border-white/10">
                 {step.title}
               </div>
               <div className="p-4">
-                <p className="text-gray-600 mb-4">{step.description}</p>
-                <div className="overflow-x-auto py-2 bg-gray-50 rounded-lg p-4">
-                  {renderLatex(step.latex)}
+                <p className="text-zinc-300 mb-4">{step.description}</p>
+                <div className="overflow-x-auto py-2 bg-black/20 rounded-lg p-4">
+                  <div className="text-white">
+                    {renderLatex(step.latex)}
+                  </div>
                 </div>
                 <button
-                  className="text-xs text-blue-500 hover:underline mt-3 flex items-center gap-1"
+                  className="text-xs text-emerald-400 hover:text-emerald-300 mt-3 flex items-center gap-1"
                   onClick={() => copyToClipboard(step.latex)}
                 >
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -86,11 +88,13 @@ export const StepViewer: React.FC<StepViewerProps> = ({ steps }) => {
                 {step.subSteps && step.subSteps.length > 0 && (
                   <div className="mt-4 ml-4 space-y-2">
                     {step.subSteps.map((subStep, subIdx) => (
-                      <div key={subIdx} className="border-l-2 border-blue-300 pl-4">
-                        <div className="font-medium text-sm text-slate-600">{subStep.title}</div>
-                        <p className="text-gray-500 text-sm mt-1">{subStep.description}</p>
-                        <div className="overflow-x-auto py-2 bg-gray-50 rounded-lg p-2 mt-2">
-                          {renderLatex(subStep.latex)}
+                      <div key={subIdx} className="border-l-2 border-emerald-500/50 pl-4">
+                        <div className="font-medium text-sm text-zinc-300">{subStep.title}</div>
+                        <p className="text-zinc-400 text-sm mt-1">{subStep.description}</p>
+                        <div className="overflow-x-auto py-2 bg-black/20 rounded-lg p-2 mt-2">
+                          <div className="text-white">
+                            {renderLatex(subStep.latex)}
+                          </div>
                         </div>
                       </div>
                     ))}

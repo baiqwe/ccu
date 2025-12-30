@@ -18,7 +18,7 @@ export function BreadcrumbNav({ locale, items }: BreadcrumbNavProps) {
 
   return (
     <nav className="mb-6" aria-label="Breadcrumb">
-      <ol className="flex items-center space-x-2 text-sm text-gray-600">
+      <ol className="flex items-center space-x-2 text-sm text-zinc-500">
         {items.map((item, index) => {
           const isLast = index === items.length - 1;
           
@@ -26,7 +26,7 @@ export function BreadcrumbNav({ locale, items }: BreadcrumbNavProps) {
             <li key={item.href} className="flex items-center">
               {index > 0 && (
                 <svg
-                  className="w-4 h-4 mx-2 text-gray-400"
+                  className="w-4 h-4 mx-2 text-zinc-600"
                   fill="currentColor"
                   viewBox="0 0 20 20"
                   aria-hidden="true"
@@ -39,13 +39,13 @@ export function BreadcrumbNav({ locale, items }: BreadcrumbNavProps) {
                 </svg>
               )}
               {isLast ? (
-                <span className="font-medium text-gray-800" aria-current="page">
+                <span className="font-medium text-white" aria-current="page">
                   {item.label}
                 </span>
               ) : (
                 <Link
                   href={item.href}
-                  className="hover:text-blue-600 transition-colors"
+                  className="hover:text-white transition-colors"
                 >
                   {item.label}
                 </Link>

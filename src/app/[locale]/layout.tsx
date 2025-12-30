@@ -56,7 +56,7 @@ export default async function LocaleLayout({
           }}
         />
       </head>
-      <body className="bg-slate-50 min-h-screen">
+      <body className="bg-[#0a0a0f] min-h-screen text-white">
         <NextIntlClientProvider messages={messages}>
           {children}
           <Footer locale={locale} />

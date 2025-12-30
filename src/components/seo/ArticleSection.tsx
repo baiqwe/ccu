@@ -25,7 +25,7 @@ export function ArticleSection({ toolId, locale }: ArticleSectionProps) {
     return (
       <Link
         href={`/${locale}/${slug}`}
-        className="text-blue-600 hover:text-blue-800 underline font-medium"
+        className="text-emerald-400 hover:text-emerald-300 underline font-medium"
       >
         {text}
       </Link>
@@ -70,7 +70,7 @@ export function ArticleSection({ toolId, locale }: ArticleSectionProps) {
         }
 
         return (
-          <p key={idx} className="mb-4 text-gray-700 leading-relaxed">
+          <p key={idx} className="mb-4 text-zinc-300 leading-relaxed">
             {parts.length > 0 ? parts : paragraph}
           </p>
         );
@@ -89,50 +89,58 @@ export function ArticleSection({ toolId, locale }: ArticleSectionProps) {
     const formulaTitle = t(`${toolId}.formulaTitle`, { defaultValue: '' });
 
     return (
-      <article className="mt-12 max-w-4xl mx-auto prose prose-slate max-w-none">
-        <h2 className="text-3xl font-bold text-gray-800 mb-6">
+      <article className="max-w-none">
+        <h2 className="text-3xl font-bold text-white mb-8">
           {title}
         </h2>
 
         {/* Introduction */}
-        <section className="mb-8">
-          {renderContent('introduction')}
+        <section className="mb-10">
+          <div className="text-zinc-300 leading-relaxed space-y-4">
+            {renderContent('introduction')}
+          </div>
         </section>
 
         {/* Definition */}
-        <section className="mb-8">
-          <h3 className="text-2xl font-semibold text-gray-800 mb-4">
+        <section className="mb-10">
+          <h3 className="text-2xl font-semibold text-white mb-4">
             {definitionTitle}
           </h3>
-          {renderContent('definition')}
+          <div className="text-zinc-300 leading-relaxed space-y-4">
+            {renderContent('definition')}
+          </div>
         </section>
 
         {/* Manual Calculation Steps */}
-        <section className="mb-8">
-          <h3 className="text-2xl font-semibold text-gray-800 mb-4">
+        <section className="mb-10">
+          <h3 className="text-2xl font-semibold text-white mb-4">
             {calculationTitle}
           </h3>
-          {renderContent('calculation')}
+          <div className="text-zinc-300 leading-relaxed space-y-4">
+            {renderContent('calculation')}
+          </div>
         </section>
 
         {/* Applications */}
-        <section className="mb-8">
-          <h3 className="text-2xl font-semibold text-gray-800 mb-4">
+        <section className="mb-10">
+          <h3 className="text-2xl font-semibold text-white mb-4">
             {applicationsTitle}
           </h3>
-          {renderContent('applications')}
+          <div className="text-zinc-300 leading-relaxed space-y-4">
+            {renderContent('applications')}
+          </div>
         </section>
 
         {/* Mathematical Formula (if exists) */}
         {formula && (
-          <section className="mb-8 bg-blue-50 p-6 rounded-lg border border-blue-200">
+          <section className="mb-8 bg-white/5 p-6 rounded-lg border border-white/10">
             {formulaTitle && (
-              <h3 className="text-xl font-semibold text-gray-800 mb-3">
+              <h3 className="text-xl font-semibold text-white mb-3">
                 {formulaTitle}
               </h3>
             )}
             <div
-              className="text-gray-700"
+              className="text-zinc-300"
               dangerouslySetInnerHTML={{ __html: formula }}
             />
           </section>
