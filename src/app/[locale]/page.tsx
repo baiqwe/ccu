@@ -159,7 +159,6 @@ export default function HomePage({ params: { locale } }: { params: { locale: str
                 it&apos;s truly 1/3—not 0.333333.
               </p>
               <div className="bg-black/30 rounded-lg p-4 font-mono text-sm">
-                {/* Internal representation */}
                 <div className="text-zinc-500">// Internal representation</div>
                 <div className="text-zinc-300">
                   <span className="text-violet-400">class</span> Fraction {'{'}
