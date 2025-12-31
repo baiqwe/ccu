@@ -1,8 +1,7 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { MatrixInput } from './MatrixInput';
-import { Keypad } from './Keypad';
 import { StepViewer } from './StepViewer';
 import { calculateInverse, InverseResult } from '../engines/InverseSteps';
 import { calculateRREF, RREFResult } from '../engines/RREFSteps';
@@ -28,17 +27,6 @@ export const CalculatorWrapper: React.FC<CalculatorWrapperProps> = ({ toolId }) 
   const [constants, setConstants] = useState<number[]>(() => Array(matrixSize).fill(0)); // For system equations and Cramer's rule
   const [power, setPower] = useState<number>(2); // For matrix power
   const [result, setResult] = useState<any>(null);
-  const [showKeypad, setShowKeypad] = useState(false);
-  const [focusedCell, setFocusedCell] = useState<{ row: number; col: number; matrix: 'A' | 'B' | 'C' } | null>(null);
-
-  useEffect(() => {
-    const handleResize = () => {
-      setShowKeypad(window.innerWidth < 768);
-    };
-    handleResize();
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
 
   const handleSizeChange = (size: number) => {
     setMatrixSize(size);
@@ -93,108 +81,8 @@ export const CalculatorWrapper: React.FC<CalculatorWrapperProps> = ({ toolId }) 
     setMatrixB(emptyMatrix);
     setConstants(Array(matrixSize).fill(0));
     setResult(null);
-    setFocusedCell(null); // Clear focus when clearing
   };
 
-  const handleKeypadInput = (value: string) => {
-    if (!focusedCell) return;
-
-    const { row, col, matrix } = focusedCell;
-    
-    if (matrix === 'C') {
-      // Handle constants vector
-      const currentValue = constants[row].toString();
-      let newValue: string;
-      if (value === '.' && currentValue.includes('.')) {
-        newValue = currentValue;
-      } else if (value === '-' && currentValue === '') {
-        newValue = '-';
-      } else if (value === '-' && currentValue.startsWith('-')) {
-        newValue = currentValue.substring(1);
-      } else if (currentValue === '0' && value !== '.') {
-        newValue = value;
-      } else {
-        newValue = currentValue + value;
-      }
-      const numValue = parseFloat(newValue) || 0;
-      const newConstants = [...constants];
-      newConstants[row] = numValue;
-      setConstants(newConstants);
-      return;
-    }
-    
-    const currentMatrix = matrix === 'A' ? matrixA : matrixB;
-    const currentValue = currentMatrix[row][col].toString();
-
-    let newValue: string;
-    if (value === '.' && currentValue.includes('.')) {
-      newValue = currentValue;
-    } else if (value === '-' && currentValue === '') {
-      newValue = '-';
-    } else if (value === '-' && currentValue.startsWith('-')) {
-      newValue = currentValue.substring(1);
-    } else if (currentValue === '0' && value !== '.') {
-      newValue = value;
-    } else {
-      newValue = currentValue + value;
-    }
-
-    const numValue = parseFloat(newValue) || 0;
-    if (matrix === 'A') {
-      const newMatrix = matrixA.map(r => [...r]);
-      newMatrix[row][col] = numValue;
-      setMatrixA(newMatrix);
-    } else {
-      const newMatrix = matrixB.map(r => [...r]);
-      newMatrix[row][col] = numValue;
-      setMatrixB(newMatrix);
-    }
-  };
-
-  const handleKeypadBackspace = () => {
-    if (!focusedCell) return;
-
-    const { row, col, matrix } = focusedCell;
-    
-    if (matrix === 'C') {
-      const currentValue = constants[row].toString();
-      const newValue = currentValue.length > 1 ? currentValue.slice(0, -1) : '0';
-      const numValue = parseFloat(newValue) || 0;
-      const newConstants = [...constants];
-      newConstants[row] = numValue;
-      setConstants(newConstants);
-      return;
-    }
-    
-    const currentMatrix = matrix === 'A' ? matrixA : matrixB;
-    const currentValue = currentMatrix[row][col].toString();
-
-    const newValue = currentValue.length > 1 ? currentValue.slice(0, -1) : '0';
-    const numValue = parseFloat(newValue) || 0;
-
-    if (matrix === 'A') {
-      const newMatrix = matrixA.map(r => [...r]);
-      newMatrix[row][col] = numValue;
-      setMatrixA(newMatrix);
-    } else {
-      const newMatrix = matrixB.map(r => [...r]);
-      newMatrix[row][col] = numValue;
-      setMatrixB(newMatrix);
-    }
-  };
-
-  const handleNextCell = () => {
-    if (!focusedCell) return;
-
-    const { row, col, matrix } = focusedCell;
-    const size = matrix === 'A' ? matrixA.length : matrixB.length;
-
-    if (col < size - 1) {
-      setFocusedCell({ row, col: col + 1, matrix });
-    } else if (row < size - 1) {
-      setFocusedCell({ row: row + 1, col: 0, matrix });
-    }
-  };
 
   const renderResult = () => {
     if (!result) return null;
@@ -215,7 +103,7 @@ export const CalculatorWrapper: React.FC<CalculatorWrapperProps> = ({ toolId }) 
             rows={matrixSize}
             columns={matrixSize}
             values={inverseResult.inverse.map(row => row.map(f => f.toNumber()))}
-            onChange={() => {}}
+            onChange={() => { }}
             readOnly
           />
         </div>
@@ -231,7 +119,7 @@ export const CalculatorWrapper: React.FC<CalculatorWrapperProps> = ({ toolId }) 
             rows={rrefResult.rref.length}
             columns={rrefResult.rref[0].length}
             values={rrefResult.rref.map(row => row.map(f => f.toNumber()))}
-            onChange={() => {}}
+            onChange={() => { }}
             readOnly
           />
         </div>
@@ -247,7 +135,7 @@ export const CalculatorWrapper: React.FC<CalculatorWrapperProps> = ({ toolId }) 
             rows={multResult.result.length}
             columns={multResult.result[0].length}
             values={multResult.result.map(row => row.map(f => f.toNumber()))}
-            onChange={() => {}}
+            onChange={() => { }}
             readOnly
           />
         </div>
@@ -326,7 +214,7 @@ export const CalculatorWrapper: React.FC<CalculatorWrapperProps> = ({ toolId }) 
             rows={powerResult.result.length}
             columns={powerResult.result[0].length}
             values={powerResult.result.map(row => row.map(f => f.toNumber()))}
-            onChange={() => {}}
+            onChange={() => { }}
             readOnly
           />
         </div>
@@ -353,11 +241,10 @@ export const CalculatorWrapper: React.FC<CalculatorWrapperProps> = ({ toolId }) 
             <button
               key={size}
               onClick={() => handleSizeChange(size)}
-              className={`px-4 py-2 rounded-lg font-medium transition-all ${
-                matrixSize === size
+              className={`px-4 py-2 rounded-lg font-medium transition-all ${matrixSize === size
                   ? 'bg-purple-600 text-white'
                   : 'bg-white text-gray-700 hover:bg-gray-50 border border-gray-300'
-              }`}
+                }`}
             >
               {size}×{size}
             </button>
@@ -395,9 +282,6 @@ export const CalculatorWrapper: React.FC<CalculatorWrapperProps> = ({ toolId }) 
             columns={matrixSize}
             values={matrixA}
             onChange={setMatrixA}
-            onFocus={(row, col) => setFocusedCell({ row, col, matrix: 'A' })}
-            onBlur={() => setFocusedCell(null)}
-            matrixId="A"
           />
         </div>
 
@@ -409,9 +293,6 @@ export const CalculatorWrapper: React.FC<CalculatorWrapperProps> = ({ toolId }) 
               columns={matrixSize}
               values={matrixB}
               onChange={setMatrixB}
-              onFocus={(row, col) => setFocusedCell({ row, col, matrix: 'B' })}
-              onBlur={() => setFocusedCell(null)}
-              matrixId="B"
             />
           </div>
         )}
@@ -468,14 +349,7 @@ export const CalculatorWrapper: React.FC<CalculatorWrapperProps> = ({ toolId }) 
         <StepViewer steps={result.steps} />
       )}
 
-      {showKeypad && (
-        <Keypad
-          onInput={handleKeypadInput}
-          onClear={handleClear}
-          onBackspace={handleKeypadBackspace}
-          onNextCell={handleNextCell}
-        />
-      )}
+
     </div>
   );
 };
