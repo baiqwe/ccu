@@ -37,10 +37,13 @@ export default function HomePage({ params: { locale } }: { params: { locale: str
         {/* Subtle gradient orbs */}
         <div className="absolute top-20 left-1/4 w-96 h-96 bg-purple-200/20 rounded-full blur-[128px]"></div>
         <div className="absolute top-40 right-1/4 w-80 h-80 bg-purple-100/20 rounded-full blur-[100px]"></div>
-        
+
         <div className="max-w-6xl mx-auto relative">
-          {/* Badge */}
-          <div className="flex justify-center mb-8">
+          {/* Logo & Badge */}
+          <div className="flex flex-col items-center mb-8 gap-6">
+            <div className="w-20 h-20 bg-white rounded-2xl shadow-lg flex items-center justify-center p-4 border border-gray-100">
+              <img src="/favicon.svg" alt="MatrixCalc Logo" className="w-full h-full" />
+            </div>
             <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-purple-100 border border-purple-200">
               <span className="text-xs font-mono text-purple-700">v2.0</span>
               <span className="w-px h-4 bg-purple-300"></span>
@@ -56,11 +59,11 @@ export default function HomePage({ params: { locale } }: { params: { locale: str
             <span className="block text-2xl md:text-3xl lg:text-4xl font-light text-gray-600">
               with step-by-step solutions & exact fractions
             </span>
-        </h1>
+          </h1>
 
           {/* Description */}
           <p className="text-center text-lg md:text-xl text-gray-600 max-w-2xl mx-auto mb-12 leading-relaxed">
-            Built for students learning linear algebra. Every calculation shows the complete 
+            Built for students learning linear algebra. Every calculation shows the complete
             derivation process—exactly like your textbook, but computed in milliseconds.
           </p>
 
@@ -102,16 +105,16 @@ export default function HomePage({ params: { locale } }: { params: { locale: str
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Available Calculators</h2>
             <p className="text-gray-600 max-w-xl mx-auto">
-              Each tool implements textbook algorithms with complete step visualization. 
+              Each tool implements textbook algorithms with complete step visualization.
               Select one to see the mathematical derivation process.
-        </p>
-      </div>
+            </p>
+          </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {tools.map((tool) => (
-          <Link
-            key={tool.id}
-            href={`/${locale}/${tool.slug}`}
+            {tools.map((tool) => (
+              <Link
+                key={tool.id}
+                href={`/${locale}/${tool.slug}`}
                 className="group relative bg-white border border-gray-200 rounded-xl p-6 hover:border-purple-300 hover:shadow-lg transition-all duration-300"
               >
                 {/* Icon */}
@@ -120,23 +123,23 @@ export default function HomePage({ params: { locale } }: { params: { locale: str
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
                   </svg>
                 </div>
-                
+
                 <div className="mb-4">
                   <h3 className="text-lg font-semibold text-gray-900 group-hover:text-purple-600 transition-colors mb-1">
                     {tool.name}
                   </h3>
                   <p className="text-sm text-gray-500 font-mono">{tool.desc}</p>
-              </div>
+                </div>
 
                 <div className="flex items-center text-sm font-medium text-purple-600 opacity-0 group-hover:opacity-100 transform translate-x-2 group-hover:translate-x-0 transition-all duration-300">
                   <span>Open calculator</span>
                   <svg className="w-4 h-4 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
-            </div>
-          </Link>
-        ))}
-      </div>
+                  </svg>
+                </div>
+              </Link>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -146,7 +149,7 @@ export default function HomePage({ params: { locale } }: { params: { locale: str
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Our Methodology</h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
-              We don&apos;t just give you answers—we show you how mathematicians actually derive them. 
+              We don&apos;t just give you answers—we show you how mathematicians actually derive them.
               Every step follows established linear algebra textbook conventions.
             </p>
           </div>
@@ -161,8 +164,8 @@ export default function HomePage({ params: { locale } }: { params: { locale: str
                 <h3 className="text-xl font-semibold text-gray-900">Fraction-Based Arithmetic</h3>
               </div>
               <p className="text-gray-600 leading-relaxed mb-6">
-                Unlike floating-point calculators that introduce rounding errors, we represent 
-                all numbers as exact fractions. When you see <code className="px-2 py-1 bg-gray-100 rounded text-purple-600 font-mono text-sm">1/3</code>, 
+                Unlike floating-point calculators that introduce rounding errors, we represent
+                all numbers as exact fractions. When you see <code className="px-2 py-1 bg-gray-100 rounded text-purple-600 font-mono text-sm">1/3</code>,
                 it&apos;s truly 1/3—not 0.333333.
               </p>
               <div className="bg-gray-50 rounded-lg p-4 font-mono text-sm border border-gray-200">
@@ -188,8 +191,8 @@ export default function HomePage({ params: { locale } }: { params: { locale: str
                 <h3 className="text-xl font-semibold text-gray-900">Textbook Algorithms</h3>
               </div>
               <p className="text-gray-600 leading-relaxed mb-6">
-                We implement the same methods taught in university courses. For inverse matrices, 
-                we use the Adjoint Method (cofactor expansion + transpose). For RREF, we use 
+                We implement the same methods taught in university courses. For inverse matrices,
+                we use the Adjoint Method (cofactor expansion + transpose). For RREF, we use
                 Gaussian-Jordan elimination with complete row operation logging.
               </p>
               <div className="space-y-2">
@@ -217,8 +220,8 @@ export default function HomePage({ params: { locale } }: { params: { locale: str
                 <h3 className="text-xl font-semibold text-gray-900">Step-by-Step Derivation</h3>
               </div>
               <p className="text-gray-600 leading-relaxed mb-6">
-                Each calculation generates a complete derivation trail. For a 3×3 inverse, you&apos;ll see: 
-                determinant calculation → cofactor matrix → adjugate (transpose) → final multiplication. 
+                Each calculation generates a complete derivation trail. For a 3×3 inverse, you&apos;ll see:
+                determinant calculation → cofactor matrix → adjugate (transpose) → final multiplication.
                 Every step includes the mathematical reasoning.
               </p>
               <div className="flex items-center gap-4 text-sm">
@@ -236,8 +239,8 @@ export default function HomePage({ params: { locale } }: { params: { locale: str
                 <h3 className="text-xl font-semibold text-gray-900">Client-Side Computation</h3>
               </div>
               <p className="text-gray-600 leading-relaxed mb-6">
-                All calculations run in your browser using JavaScript. We don&apos;t send your matrices to 
-                any server. Check the Network tab in DevTools—you&apos;ll see zero API calls during computation. 
+                All calculations run in your browser using JavaScript. We don&apos;t send your matrices to
+                any server. Check the Network tab in DevTools—you&apos;ll see zero API calls during computation.
                 Your data stays on your device.
               </p>
               <div className="flex items-center gap-2 text-sm text-gray-600">
@@ -257,7 +260,7 @@ export default function HomePage({ params: { locale } }: { params: { locale: str
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Built For Real Math Problems</h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
-              Whether you&apos;re solving homework problems, verifying research calculations, 
+              Whether you&apos;re solving homework problems, verifying research calculations,
               or teaching linear algebra concepts, these tools adapt to your workflow.
             </p>
           </div>
@@ -268,7 +271,7 @@ export default function HomePage({ params: { locale } }: { params: { locale: str
               <div className="text-4xl mb-4">📚</div>
               <h3 className="text-lg font-semibold text-gray-900 mb-2">Homework Verification</h3>
               <p className="text-gray-600 text-sm leading-relaxed">
-                Solve problems by hand first, then verify each step matches our derivation. 
+                Solve problems by hand first, then verify each step matches our derivation.
                 Identify exactly where you made mistakes in row operations or cofactor signs.
               </p>
             </div>
@@ -278,7 +281,7 @@ export default function HomePage({ params: { locale } }: { params: { locale: str
               <div className="text-4xl mb-4">🔬</div>
               <h3 className="text-lg font-semibold text-gray-900 mb-2">Research Computation</h3>
               <p className="text-gray-600 text-sm leading-relaxed">
-                Get exact fractional results for theoretical work. Export LaTeX directly 
+                Get exact fractional results for theoretical work. Export LaTeX directly
                 into your papers. No need to manually typeset matrix operations.
               </p>
             </div>
@@ -288,7 +291,7 @@ export default function HomePage({ params: { locale } }: { params: { locale: str
               <div className="text-4xl mb-4">👨‍🏫</div>
               <h3 className="text-lg font-semibold text-gray-900 mb-2">Teaching Tool</h3>
               <p className="text-gray-600 text-sm leading-relaxed">
-                Project step-by-step solutions during lectures. Students see the complete 
+                Project step-by-step solutions during lectures. Students see the complete
                 algorithm execution, not just the final answer.
               </p>
             </div>
@@ -335,7 +338,7 @@ export default function HomePage({ params: { locale } }: { params: { locale: str
       <section className="py-24 px-4 bg-gray-50 border-t border-gray-100">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-2xl font-bold text-gray-900 mb-8 text-center">Complete Calculator Index</h2>
-          
+
           <div className="grid md:grid-cols-2 gap-x-12 gap-y-6 text-sm">
             <div>
               <h3 className="text-gray-500 font-semibold mb-4 uppercase tracking-wider text-xs">Basic Operations</h3>
@@ -352,7 +355,7 @@ export default function HomePage({ params: { locale } }: { params: { locale: str
                 </li>
               </ul>
             </div>
-            
+
             <div>
               <h3 className="text-gray-500 font-semibold mb-4 uppercase tracking-wider text-xs">Advanced Operations</h3>
               <ul className="space-y-3">
@@ -368,7 +371,7 @@ export default function HomePage({ params: { locale } }: { params: { locale: str
                 </li>
               </ul>
             </div>
-            
+
             <div>
               <h3 className="text-gray-500 font-semibold mb-4 uppercase tracking-wider text-xs">Row Operations</h3>
               <ul className="space-y-3">
@@ -384,7 +387,7 @@ export default function HomePage({ params: { locale } }: { params: { locale: str
                 </li>
               </ul>
             </div>
-            
+
             <div>
               <h3 className="text-gray-500 font-semibold mb-4 uppercase tracking-wider text-xs">Resources</h3>
               <ul className="space-y-3">
@@ -399,9 +402,9 @@ export default function HomePage({ params: { locale } }: { params: { locale: str
                   </Link>
                 </li>
               </ul>
+            </div>
           </div>
         </div>
-      </div>
       </section>
     </main>
   );

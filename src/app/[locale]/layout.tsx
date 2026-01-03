@@ -2,6 +2,7 @@ import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, unstable_setRequestLocale } from 'next-intl/server';
 import Script from 'next/script';
 import { Footer } from '@/components/layout/Footer';
+import { getSiteUrl } from '@/lib/site-config';
 import '../globals.css';
 
 export const metadata = {
@@ -16,10 +17,20 @@ export const metadata = {
     },
   },
   icons: {
-    icon: '/favicon.ico',
-    apple: '/apple-touch-icon.png',
+    icon: [
+      { url: '/favicon.ico' },
+      { url: '/favicon.svg', type: 'image/svg+xml' },
+      { url: '/favicon-96x96.png', sizes: '96x96', type: 'image/png' },
+    ],
+    apple: [
+      { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
+    ],
   },
   manifest: '/site.webmanifest',
+  appleWebApp: {
+    title: 'MatrixCalc',
+    statusBarStyle: 'default',
+  },
 };
 
 export function generateStaticParams() {
@@ -58,8 +69,21 @@ export default async function LocaleLayout({
             gtag('config', 'G-4H0FWL25R3');
           `}
         </Script>
-        
+
         <NextIntlClientProvider messages={messages}>
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                '@context': 'https://schema.org',
+                '@type': 'Organization',
+                name: 'MatrixCalc',
+                url: getSiteUrl(),
+                logo: `${getSiteUrl()}/web-app-manifest-512x512.png`,
+                sameAs: []
+              })
+            }}
+          />
           {children}
           <Footer locale={locale} />
         </NextIntlClientProvider>

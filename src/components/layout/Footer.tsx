@@ -1,5 +1,4 @@
-'use client';
-
+import Image from 'next/image';
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 
@@ -13,7 +12,16 @@ export function Footer({ locale }: { locale: string }) {
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
                     {/* Brand Section */}
                     <div className="md:col-span-2">
-                        <h3 className="font-bold text-gray-900 text-lg mb-4">{t('aboutTitle')}</h3>
+                        <div className="flex items-center gap-3 mb-4">
+                            <Image
+                                src="/favicon.svg"
+                                alt="MatrixCalc Logo"
+                                width={32}
+                                height={32}
+                                className="w-8 h-8"
+                            />
+                            <h3 className="font-bold text-gray-900 text-lg">{t('aboutTitle')}</h3>
+                        </div>
                         <p className="text-sm text-gray-600 leading-relaxed mb-4 max-w-md">
                             {t('aboutText')}
                         </p>
